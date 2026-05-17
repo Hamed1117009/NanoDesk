@@ -22,10 +22,11 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: "3.22.0"
           channel: "stable"
 
       - name: Install Dependencies
-        run: flutter pub get
+        run: flutter pub get -v
 
       - name: Build Windows Release
         run: flutter build windows --release
