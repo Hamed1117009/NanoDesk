@@ -1,0 +1,91 @@
+name: Build Windows App
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write # اجازه برای کامیت و پوش کردن فایل‌ها در ریپازیتوری
+
+jobs:
+  build:
+    name: Build for Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.0"
+          channel: "stable"
+
+      - name: Install Dependencies
+        working-directory: ./flutter
+        continue-on-error: true
+        shell: bash # اضافه شد تا دستور ذخیره در فایل درست کار کند
+        run: flutter pub get -v > ../pub_get_log.txt 2>&1
+
+      - name: Commit and Push pub get Log
+        shell: bash
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add pub_get_log.txt || true
+          git commit -m "Add error log for flutter pub get [skip ci]" || echo "No changes to commit"
+          git pull --rebase || true
+          git push
+
+      - name: Build Windows Release
+        working-directory: ./flutter
+        continue-on-error: true
+        shell: bash # اضافه شد
+        env:
+          RENDEZVOUS_SERVER: "185.192.113.204"
+          RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
+        run: flutter build windows --release -v > ../build_log.txt 2>&1
+
+      - name: Commit and Push Build Log
+        if: always()
+        shell: bash
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add build_log.txt || true
+          git commit -m "Add build log [skip ci]" || echo "No changes to commit"
+          git pull --rebase || true
+          git push
+
+      - name: Commit and Push EXE file to Repository
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p releases
+          # کپی فایل‌ها با نادیده گرفتن خطا
+          cp -r flutter/build/windows/x64/runner/Release/* releases/ 2>/dev/null || cp -r flutter/build/windows/runner/Release/* releases/ 2>/dev/null || echo "No EXE found to copy"
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add releases/ || true
+          git commit -m "Add compiled Windows Release files [skip ci]" || echo "No changes to commit"
+          git pull --rebase || true
+          git push
+
+      - name: Upload Output Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: NanoDesk-Windows-Release
+          path: |
+            flutter/build/windows/x64/runner/Release/
+            flutter/build/windows/runner/Release/
