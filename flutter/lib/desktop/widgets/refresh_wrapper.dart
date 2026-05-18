@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:NanoDesk/common.dart';
-import 'package:NanoDesk/main.dart';
+import 'package:flutter_hbb/common.dart';
+import 'package:flutter_hbb/main.dart';
 import 'package:get/get.dart';
 
 class RefreshWrapper extends StatefulWidget {

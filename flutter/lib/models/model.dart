@@ -10,27 +10,27 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:NanoDesk/common/widgets/peers_view.dart';
-import 'package:NanoDesk/consts.dart';
-import 'package:NanoDesk/models/ab_model.dart';
-import 'package:NanoDesk/models/chat_model.dart';
-import 'package:NanoDesk/models/cm_file_model.dart';
-import 'package:NanoDesk/models/file_model.dart';
-import 'package:NanoDesk/models/group_model.dart';
-import 'package:NanoDesk/models/peer_model.dart';
-import 'package:NanoDesk/models/peer_tab_model.dart';
-import 'package:NanoDesk/models/printer_model.dart';
-import 'package:NanoDesk/models/server_model.dart';
-import 'package:NanoDesk/models/user_model.dart';
-import 'package:NanoDesk/models/state_model.dart';
-import 'package:NanoDesk/models/desktop_render_texture.dart';
-import 'package:NanoDesk/models/terminal_model.dart';
-import 'package:NanoDesk/plugin/event.dart';
-import 'package:NanoDesk/plugin/manager.dart';
-import 'package:NanoDesk/plugin/widgets/desc_ui.dart';
-import 'package:NanoDesk/common/shared_state.dart';
-import 'package:NanoDesk/utils/multi_window_manager.dart';
-import 'package:NanoDesk/utils/http_service.dart' as http;
+import 'package:flutter_hbb/common/widgets/peers_view.dart';
+import 'package:flutter_hbb/consts.dart';
+import 'package:flutter_hbb/models/ab_model.dart';
+import 'package:flutter_hbb/models/chat_model.dart';
+import 'package:flutter_hbb/models/cm_file_model.dart';
+import 'package:flutter_hbb/models/file_model.dart';
+import 'package:flutter_hbb/models/group_model.dart';
+import 'package:flutter_hbb/models/peer_model.dart';
+import 'package:flutter_hbb/models/peer_tab_model.dart';
+import 'package:flutter_hbb/models/printer_model.dart';
+import 'package:flutter_hbb/models/server_model.dart';
+import 'package:flutter_hbb/models/user_model.dart';
+import 'package:flutter_hbb/models/state_model.dart';
+import 'package:flutter_hbb/models/desktop_render_texture.dart';
+import 'package:flutter_hbb/models/terminal_model.dart';
+import 'package:flutter_hbb/plugin/event.dart';
+import 'package:flutter_hbb/plugin/manager.dart';
+import 'package:flutter_hbb/plugin/widgets/desc_ui.dart';
+import 'package:flutter_hbb/common/shared_state.dart';
+import 'package:flutter_hbb/utils/multi_window_manager.dart';
+import 'package:flutter_hbb/utils/http_service.dart' as http;
 import 'package:tuple/tuple.dart';
 import 'package:image/image.dart' as img2;
 import 'package:flutter_svg/flutter_svg.dart';
@@ -45,12 +45,12 @@ import '../utils/image.dart' as img;
 import '../common/widgets/dialog.dart';
 import 'input_model.dart';
 import 'platform_model.dart';
-import 'package:NanoDesk/utils/scale.dart';
+import 'package:flutter_hbb/utils/scale.dart';
 
-import 'package:NanoDesk/generated_bridge.dart'
-    if (dart.library.html) 'package:NanoDesk/web/bridge.dart';
-import 'package:NanoDesk/native/custom_cursor.dart'
-    if (dart.library.html) 'package:NanoDesk/web/custom_cursor.dart';
+import 'package:flutter_hbb/generated_bridge.dart'
+    if (dart.library.html) 'package:flutter_hbb/web/bridge.dart';
+import 'package:flutter_hbb/native/custom_cursor.dart'
+    if (dart.library.html) 'package:flutter_hbb/web/custom_cursor.dart';
 
 typedef HandleMsgBox = Function(Map<String, dynamic> evt, String id);
 typedef ReconnectHandle = Function(OverlayDialogManager, SessionID, bool);

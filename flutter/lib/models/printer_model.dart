@@ -1,6 +1,6 @@
-import 'package:NanoDesk/common.dart';
-import 'package:NanoDesk/consts.dart';
-import 'package:NanoDesk/models/platform_model.dart';
+import 'package:flutter_hbb/common.dart';
+import 'package:flutter_hbb/consts.dart';
+import 'package:flutter_hbb/models/platform_model.dart';
 
 class PrinterOptions {
   String action;

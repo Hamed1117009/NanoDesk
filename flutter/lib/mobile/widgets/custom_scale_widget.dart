@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:NanoDesk/models/model.dart';
-import 'package:NanoDesk/common.dart';
-import 'package:NanoDesk/common/widgets/custom_scale_base.dart';
+import 'package:flutter_hbb/models/model.dart';
+import 'package:flutter_hbb/common.dart';
+import 'package:flutter_hbb/common/widgets/custom_scale_base.dart';
 
 class MobileCustomScaleControls extends StatefulWidget {
   final FFI ffi;

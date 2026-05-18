@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:NanoDesk/common.dart';
+import 'package:flutter_hbb/common.dart';
 import 'package:provider/provider.dart';
 
-import 'package:NanoDesk/desktop/pages/terminal_tab_page.dart';
+import 'package:flutter_hbb/desktop/pages/terminal_tab_page.dart';
 
 class DesktopTerminalScreen extends StatelessWidget {
   final Map<String, dynamic> params;

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:NanoDesk/common.dart';
+import 'package:flutter_hbb/common.dart';
 
 void showPeerSelectionDialog(
     {bool singleSelection = false,
