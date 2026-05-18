@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # اجازه کامل برای کامیت و پوش کردن لاگ‌ها و فایل exe در ریپازیتوری
+  contents: write # اجازه برای کامیت و پوش کردن فایل‌ها در ریپازیتوری
 
 jobs:
   build:
@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
@@ -39,7 +41,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add pub_get_log.txt || true
-          git commit -m "Add error log for flutter pub get" || echo "No changes to commit"
+          git commit -m "Add error log for flutter pub get [skip ci]" || echo "No changes to commit"
           git pull --rebase || true
           git push
 
@@ -58,7 +60,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add build_log.txt || true
-          git commit -m "Add build log" || echo "No changes to commit"
+          git commit -m "Add build log [skip ci]" || echo "No changes to commit"
           git pull --rebase || true
           git push
 
@@ -67,13 +69,13 @@ jobs:
         shell: bash
         run: |
           mkdir -p releases
-          # کپی فایل‌ها با نادیده گرفتن خطا در صورت عدم وجود مسیر
+          # کپی فایل‌ها با نادیده گرفتن خطا
           cp -r flutter/build/windows/x64/runner/Release/* releases/ 2>/dev/null || cp -r flutter/build/windows/runner/Release/* releases/ 2>/dev/null || echo "No EXE found to copy"
 
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add releases/ || true
-          git commit -m "Add compiled Windows Release files" || echo "No changes to commit"
+          git commit -m "Add compiled Windows Release files [skip ci]" || echo "No changes to commit"
           git pull --rebase || true
           git push
 
