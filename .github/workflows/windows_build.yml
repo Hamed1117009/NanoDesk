@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write #1 اجازه برای کامیت و پوش کردن فایل‌ها در ریپازیتوری
+  contents: write # اجازه برای کامیت و پوش کردن فایل‌ها در ریپازیتوری
 
 jobs:
   build:
@@ -33,6 +33,7 @@ jobs:
       - name: Install Dependencies
         working-directory: ./flutter
         continue-on-error: true
+        shell: bash # اضافه شد تا دستور ذخیره در فایل درست کار کند
         run: flutter pub get -v > ../pub_get_log.txt 2>&1
 
       - name: Commit and Push pub get Log
@@ -48,6 +49,7 @@ jobs:
       - name: Build Windows Release
         working-directory: ./flutter
         continue-on-error: true
+        shell: bash # اضافه شد
         env:
           RENDEZVOUS_SERVER: "185.192.113.204"
           RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
