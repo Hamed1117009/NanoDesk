@@ -32,7 +32,7 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ./flutter
-        continue-on-error: true
+        continue-on-error: false
         shell: bash # اضافه شد تا دستور ذخیره در فایل درست کار کند
         run: flutter pub get -v > ../pub_get_log.txt 2>&1
 
