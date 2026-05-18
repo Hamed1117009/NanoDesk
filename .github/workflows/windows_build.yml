@@ -29,7 +29,8 @@ jobs:
           channel: "stable"
 
       - name: Install Dependencies
-        run: flutter pub get -v > pub_get_log.txt 2>&1
+        working-directory: ./flutter
+        run: flutter pub get -v > ../pub_get_log.txt 2>&1
         continue-on-error: true
 
       - name: Commit and Push pub get Log
@@ -39,14 +40,16 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add pub_get_log.txt
           git commit -m "Add error log for flutter pub get" || echo "No changes to commit"
+          git pull --rebase
           git push
 
       - name: Build Windows Release
+        working-directory: ./flutter
         continue-on-error: true
         env:
           RENDEZVOUS_SERVER: "185.192.113.204"
           RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
-        run: flutter build windows --release -v > build_log.txt 2>&1
+        run: flutter build windows --release -v > ../build_log.txt 2>&1
 
       - name: Commit and Push Build Log
         if: always()
@@ -56,6 +59,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add build_log.txt
           git commit -m "Add build log" || echo "No changes to commit"
+          git pull --rebase
           git push
 
       - name: Commit and Push EXE file to Repository
@@ -64,17 +68,20 @@ jobs:
         run: |
           # ساخت یک پوشه برای قرار دادن فایل‌های خروجی
           mkdir -p releases
-          # کپی کردن فایل‌های خروجی به این پوشه
-          cp -r build/windows/runner/Release/* releases/ || echo "No EXE found to copy"
+          # کپی کردن فایل‌های خروجی به این پوشه (هم مسیر جدید و هم قدیمی فلاتر در نظر گرفته شده است)
+          cp -r flutter/build/windows/x64/runner/Release/* releases/ || cp -r flutter/build/windows/runner/Release/* releases/ || echo "No EXE found to copy"
 
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add releases/
           git commit -m "Add compiled Windows Release files" || echo "No changes to commit"
+          git pull --rebase
           git push
 
       - name: Upload Output Artifact
         uses: actions/upload-artifact@v4
         with:
           name: NanoDesk-Windows-Release
-          path: build/windows/runner/Release/
+          path: |
+            flutter/build/windows/x64/runner/Release/
+            flutter/build/windows/runner/Release/
