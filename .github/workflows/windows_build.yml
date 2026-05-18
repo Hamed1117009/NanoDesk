@@ -67,7 +67,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p releases
-          # کپی فایل‌ها با نادیده گرفتن خطا در صورت عدم وجود مسیر
+          # کپی فایل‌ها با نادیده گرفتن خطا در صورت عدم وجود مسیر1
           cp -r flutter/build/windows/x64/runner/Release/* releases/ 2>/dev/null || cp -r flutter/build/windows/runner/Release/* releases/ 2>/dev/null || echo "No EXE found to copy"
 
           git config --global user.name "github-actions[bot]"
