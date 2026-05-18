@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # اجازه برای کامیت و پوش کردن فایل‌ها در ریپازیتوری
+  contents: write #1 اجازه برای کامیت و پوش کردن فایل‌ها در ریپازیتوری
 
 jobs:
   build:
