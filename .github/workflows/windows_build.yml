@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # این خط به بات گیت‌هاب اجازه می‌دهد فایل لاگ را روی ریپازیتوری شما ذخیره کند
+  contents: write # اجازه نوشتن لاگ‌ها و فایل exe در ریپازیتوری
 
 jobs:
   build:
@@ -33,6 +33,7 @@ jobs:
         continue-on-error: true
 
       - name: Commit and Push pub get Log
+        shell: bash
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -42,15 +43,34 @@ jobs:
 
       - name: Build Windows Release
         continue-on-error: true
+        env:
+          RENDEZVOUS_SERVER: "185.192.113.204"
+          RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
         run: flutter build windows --release -v > build_log.txt 2>&1
 
       - name: Commit and Push Build Log
         if: always()
+        shell: bash
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add build_log.txt
           git commit -m "Add build log" || echo "No changes to commit"
+          git push
+
+      - name: Commit and Push EXE file to Repository
+        if: always()
+        shell: bash
+        run: |
+          # ساخت یک پوشه برای قرار دادن فایل‌های خروجی
+          mkdir -p releases
+          # کپی کردن فایل‌های خروجی به این پوشه
+          cp -r build/windows/runner/Release/* releases/ || echo "No EXE found to copy"
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add releases/
+          git commit -m "Add compiled Windows Release files" || echo "No changes to commit"
           git push
 
       - name: Upload Output Artifact
