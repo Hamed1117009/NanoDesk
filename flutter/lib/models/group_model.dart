@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_hbb/common.dart';
-import 'package:flutter_hbb/common/hbbs/hbbs.dart';
-import 'package:flutter_hbb/common/widgets/peers_view.dart';
-import 'package:flutter_hbb/models/model.dart';
-import 'package:flutter_hbb/models/peer_model.dart';
-import 'package:flutter_hbb/models/platform_model.dart';
+import 'package:NanoDesk/common.dart';
+import 'package:NanoDesk/common/hbbs/hbbs.dart';
+import 'package:NanoDesk/common/widgets/peers_view.dart';
+import 'package:NanoDesk/models/model.dart';
+import 'package:NanoDesk/models/peer_model.dart';
+import 'package:NanoDesk/models/platform_model.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 import '../utils/http_service.dart' as http;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hbb/common.dart';
-import 'package:flutter_hbb/models/platform_model.dart';
-import 'package:flutter_hbb/plugin/model.dart';
-import 'package:flutter_hbb/plugin/common.dart';
+import 'package:NanoDesk/common.dart';
+import 'package:NanoDesk/models/platform_model.dart';
+import 'package:NanoDesk/plugin/model.dart';
+import 'package:NanoDesk/plugin/common.dart';
 import 'package:get/get.dart';
 
 import '../manager.dart';

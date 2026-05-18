@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hbb/common/formatter/id_formatter.dart';
+import 'package:NanoDesk/common/formatter/id_formatter.dart';
 import '../../../models/platform_model.dart';
-import 'package:flutter_hbb/models/peer_model.dart';
-import 'package:flutter_hbb/common.dart';
-import 'package:flutter_hbb/common/widgets/peer_card.dart';
+import 'package:NanoDesk/models/peer_model.dart';
+import 'package:NanoDesk/common.dart';
+import 'package:NanoDesk/common/widgets/peer_card.dart';
 
 class AllPeersLoader {
   List<Peer> peers = [];

@@ -3,8 +3,8 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hbb/plugin/ui_manager.dart';
-import 'package:flutter_hbb/plugin/utils/dialogs.dart';
+import 'package:NanoDesk/plugin/ui_manager.dart';
+import 'package:NanoDesk/plugin/utils/dialogs.dart';
 
 abstract class NativeHandler {
   bool onEvent(Map<String, dynamic> evt);
