@@ -21,8 +21,6 @@ jobs:
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: stable
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -33,14 +31,18 @@ jobs:
       - name: Install LLVM and Clang
         run: |
           choco install llvm -y
-          echo "C:\Program Files\LLVM\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          $llvmPath = "C:\Program Files\LLVM\bin"
+          echo $llvmPath | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "LLVM_PATH=C:\Program Files\LLVM" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Install vcpkg dependencies
         run: vcpkg integrate install
 
       - name: Install flutter_rust_bridge_codegen
         shell: bash
-        run: cargo install flutter_rust_bridge_codegen --version 1.82.6
+        run: |
+          cargo install flutter_rust_bridge_codegen --version 1.82.6 --force
+          flutter_rust_bridge_codegen --version
 
       - name: Install Dependencies
         working-directory: ./flutter
@@ -54,37 +56,75 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add pub_get_log.txt || true
-          git commit -m "Add pub get log [skip ci]" || echo "No changes to commit"
+          git commit -m "Add pub get log [skip ci]" || true
           git pull --rebase || true
-          git push || echo "Push failed, continuing anyway"
+          git push || true
 
-      - name: Verify Rust Files Exist
+      - name: Debug - List Project Structure
         shell: bash
         run: |
-          echo "Checking for Rust FFI files..."
-          ls -la src/flutter_ffi.rs || echo "flutter_ffi.rs not found!"
+          echo "=== Root directory ==="
+          ls -la
+          echo "=== src/ directory ==="
+          ls -la src/ || echo "src/ not found!"
+          echo "=== flutter/lib/ directory ==="
           ls -la flutter/lib/ || echo "flutter/lib/ not found!"
+          echo "=== Checking for flutter_ffi.rs ==="
+          find . -name "flutter_ffi.rs" -o -name "*ffi*.rs" || echo "No FFI files found!"
 
       - name: Generate Rust Bridge Code
         shell: bash
-        env:
-          LLVM_PATH: "C:\\Program Files\\LLVM"
+        continue-on-error: false
         run: |
+          echo "Current directory: $(pwd)"
+          echo "LLVM_PATH: $LLVM_PATH"
+
+          # بررسی وجود فایل ورودی
+          if [ ! -f "src/flutter_ffi.rs" ]; then
+            echo "ERROR: src/flutter_ffi.rs not found!"
+            echo "Searching for alternative FFI files..."
+            find . -name "*ffi*.rs"
+            exit 1
+          fi
+
+          # اجرای codegen با verbose output
           flutter_rust_bridge_codegen \
             --rust-input src/flutter_ffi.rs \
             --dart-output flutter/lib/generated_bridge.dart \
-            --c-output src/bridge_generated.h
+            --c-output src/bridge_generated.h \
+            --verbose || {
+              echo "Codegen failed! Trying with different LLVM path..."
+              export LLVM_PATH="C:/Program Files/LLVM"
+              flutter_rust_bridge_codegen \
+                --rust-input src/flutter_ffi.rs \
+                --dart-output flutter/lib/generated_bridge.dart \
+                --c-output src/bridge_generated.h \
+                --verbose
+            }
 
       - name: Verify Generated Files
         shell: bash
         run: |
-          echo "Checking generated files..."
-          ls -la flutter/lib/generated_bridge.dart || echo "generated_bridge.dart NOT created!"
-          ls -la src/bridge_generated.h || echo "bridge_generated.h NOT created!"
+          echo "=== Checking generated files ==="
+          if [ -f "flutter/lib/generated_bridge.dart" ]; then
+            echo "✅ generated_bridge.dart created successfully"
+            head -n 20 flutter/lib/generated_bridge.dart
+          else
+            echo "❌ generated_bridge.dart NOT created!"
+            exit 1
+          fi
+
+          if [ -f "src/bridge_generated.h" ]; then
+            echo "✅ bridge_generated.h created successfully"
+          else
+            echo "⚠️ bridge_generated.h NOT created (may not be critical)"
+          fi
 
       - name: Build Rust Library
         shell: bash
-        run: cargo build --release --features flutter
+        run: |
+          echo "Building Rust library..."
+          cargo build --release --features flutter --verbose
 
       - name: Build Windows Release
         working-directory: ./flutter
@@ -103,9 +143,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add build_log.txt || true
-          git commit -m "Add build log [skip ci]" || echo "No changes to commit"
+          git commit -m "Add build log [skip ci]" || true
           git pull --rebase || true
-          git push || echo "Push failed, continuing anyway"
+          git push || true
 
       - name: Commit and Push EXE file to Repository
         if: always()
@@ -113,13 +153,14 @@ jobs:
         shell: bash
         run: |
           mkdir -p releases
-          cp -r flutter/build/windows/x64/runner/Release/* releases/ 2>/dev/null || cp -r flutter/build/windows/runner/Release/* releases/ 2>/dev/null || echo "No EXE found to copy"
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          cp -r flutter/build/windows/x64/runner/Release/* releases/ 2>/dev/null || \
+          cp -r flutter/build/windows/runner/Release/* releases/ 2>/dev/null || \
+          echo "No release files found"
+
           git add releases/ || true
-          git commit -m "Add compiled Windows Release files [skip ci]" || echo "No changes to commit"
+          git commit -m "Add compiled Windows Release files [skip ci]" || true
           git pull --rebase || true
-          git push || echo "Push failed, continuing anyway"
+          git push || true
 
       - name: Upload Output Artifact
         if: always()
