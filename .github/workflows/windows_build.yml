@@ -38,6 +38,10 @@ jobs:
       - name: Install vcpkg dependencies
         run: vcpkg integrate install
 
+      - name: Install flutter_rust_bridge_codegen
+        shell: bash
+        run: cargo install flutter_rust_bridge_codegen --version 1.82.6
+
       - name: Install Dependencies
         working-directory: ./flutter
         shell: bash
@@ -50,15 +54,33 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add pub_get_log.txt || true
-          git commit -m "Add error log for flutter pub get [skip ci]" || echo "No changes to commit"
+          git commit -m "Add pub get log [skip ci]" || echo "No changes to commit"
           git pull --rebase || true
           git push || echo "Push failed, continuing anyway"
 
-      - name: Generate Rust Bridge Code
-        working-directory: ./flutter
+      - name: Verify Rust Files Exist
         shell: bash
         run: |
-          flutter pub run flutter_rust_bridge:codegen --rust-input ../src/flutter_ffi.rs --dart-output lib/generated_bridge.dart --c-output ../src/bridge_generated.h
+          echo "Checking for Rust FFI files..."
+          ls -la src/flutter_ffi.rs || echo "flutter_ffi.rs not found!"
+          ls -la flutter/lib/ || echo "flutter/lib/ not found!"
+
+      - name: Generate Rust Bridge Code
+        shell: bash
+        env:
+          LLVM_PATH: "C:\\Program Files\\LLVM"
+        run: |
+          flutter_rust_bridge_codegen \
+            --rust-input src/flutter_ffi.rs \
+            --dart-output flutter/lib/generated_bridge.dart \
+            --c-output src/bridge_generated.h
+
+      - name: Verify Generated Files
+        shell: bash
+        run: |
+          echo "Checking generated files..."
+          ls -la flutter/lib/generated_bridge.dart || echo "generated_bridge.dart NOT created!"
+          ls -la src/bridge_generated.h || echo "bridge_generated.h NOT created!"
 
       - name: Build Rust Library
         shell: bash
