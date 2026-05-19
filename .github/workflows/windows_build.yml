@@ -40,11 +40,11 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ./flutter
-        continue-on-error: false
         shell: bash
         run: flutter pub get -v > ../pub_get_log.txt 2>&1
 
       - name: Commit and Push pub get Log
+        continue-on-error: true
         shell: bash
         run: |
           git config --global user.name "github-actions[bot]"
@@ -52,7 +52,7 @@ jobs:
           git add pub_get_log.txt || true
           git commit -m "Add error log for flutter pub get [skip ci]" || echo "No changes to commit"
           git pull --rebase || true
-          git push
+          git push || echo "Push failed, continuing anyway"
 
       - name: Generate Rust Bridge Code
         working-directory: ./flutter
@@ -75,6 +75,7 @@ jobs:
 
       - name: Commit and Push Build Log
         if: always()
+        continue-on-error: true
         shell: bash
         run: |
           git config --global user.name "github-actions[bot]"
@@ -82,10 +83,11 @@ jobs:
           git add build_log.txt || true
           git commit -m "Add build log [skip ci]" || echo "No changes to commit"
           git pull --rebase || true
-          git push
+          git push || echo "Push failed, continuing anyway"
 
       - name: Commit and Push EXE file to Repository
         if: always()
+        continue-on-error: true
         shell: bash
         run: |
           mkdir -p releases
@@ -95,7 +97,7 @@ jobs:
           git add releases/ || true
           git commit -m "Add compiled Windows Release files [skip ci]" || echo "No changes to commit"
           git pull --rebase || true
-          git push
+          git push || echo "Push failed, continuing anyway"
 
       - name: Upload Output Artifact
         if: always()
