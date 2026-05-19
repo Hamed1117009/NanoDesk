@@ -60,41 +60,45 @@ jobs:
           git pull --rebase || true
           git push || true
 
-      - name: Debug - List Project Structure
+      - name: Verify FFI File Exists
         shell: bash
         run: |
-          echo "=== Root directory ==="
-          ls -la
-          echo "=== src/ directory ==="
-          ls -la src/ || echo "src/ not found!"
-          echo "=== flutter/lib/ directory ==="
-          ls -la flutter/lib/ || echo "flutter/lib/ not found!"
-          echo "=== Checking for flutter_ffi.rs ==="
-          find . -name "flutter_ffi.rs" -o -name "*ffi*.rs" || echo "No FFI files found!"
-
-      - name: Generate Rust Bridge Code
-        shell: bash
-        continue-on-error: false
-        run: |
-          echo "Current directory: $(pwd)"
-          echo "LLVM_PATH: $LLVM_PATH"
-
-          # بررسی وجود فایل ورودی
-          if [ ! -f "src/flutter_ffi.rs" ]; then
-            echo "ERROR: src/flutter_ffi.rs not found!"
-            echo "Searching for alternative FFI files..."
-            find . -name "*ffi*.rs"
+          echo "=== Checking src/flutter_ffi.rs ==="
+          if [ -f "src/flutter_ffi.rs" ]; then
+            echo "✅ src/flutter_ffi.rs found"
+            echo "File size: $(wc -c < src/flutter_ffi.rs) bytes"
+            echo ""
+            echo "First 20 lines:"
+            head -n 20 src/flutter_ffi.rs
+          else
+            echo "❌ CRITICAL: src/flutter_ffi.rs NOT found!"
+            ls -la src/
             exit 1
           fi
 
-          # اجرای codegen با verbose output
+      - name: Generate Rust Bridge Code
+        shell: bash
+        run: |
+          echo "=== Starting Code Generation ==="
+          echo "LLVM_PATH: $LLVM_PATH"
+          echo "PATH: $PATH"
+
+          # ایجاد دایرکتوری‌های خروجی
+          mkdir -p flutter/lib
+          mkdir -p src
+
+          # اجرای codegen با مسیر دقیق
           flutter_rust_bridge_codegen \
             --rust-input src/flutter_ffi.rs \
             --dart-output flutter/lib/generated_bridge.dart \
             --c-output src/bridge_generated.h \
             --verbose || {
-              echo "Codegen failed! Trying with different LLVM path..."
+              echo ""
+              echo "⚠️ First attempt failed, trying with explicit LLVM configuration..."
               export LLVM_PATH="C:/Program Files/LLVM"
+              export PATH="$LLVM_PATH/bin:$PATH"
+              export LIBCLANG_PATH="$LLVM_PATH/bin"
+              
               flutter_rust_bridge_codegen \
                 --rust-input src/flutter_ffi.rs \
                 --dart-output flutter/lib/generated_bridge.dart \
@@ -105,26 +109,39 @@ jobs:
       - name: Verify Generated Files
         shell: bash
         run: |
-          echo "=== Checking generated files ==="
+          echo "=== Verifying Generated Files ==="
+
           if [ -f "flutter/lib/generated_bridge.dart" ]; then
             echo "✅ generated_bridge.dart created successfully"
-            head -n 20 flutter/lib/generated_bridge.dart
+            echo "File size: $(wc -c < flutter/lib/generated_bridge.dart) bytes"
+            echo ""
+            echo "First 30 lines:"
+            head -n 30 flutter/lib/generated_bridge.dart
           else
-            echo "❌ generated_bridge.dart NOT created!"
+            echo "❌ CRITICAL: generated_bridge.dart NOT created!"
+            echo ""
+            echo "Contents of flutter/lib/:"
+            ls -la flutter/lib/
+            echo ""
+            echo "Checking if directory exists:"
+            [ -d "flutter/lib" ] && echo "Directory exists" || echo "Directory missing"
             exit 1
           fi
 
           if [ -f "src/bridge_generated.h" ]; then
-            echo "✅ bridge_generated.h created successfully"
+            echo ""
+            echo "✅ bridge_generated.h created"
+            echo "File size: $(wc -c < src/bridge_generated.h) bytes"
           else
-            echo "⚠️ bridge_generated.h NOT created (may not be critical)"
+            echo ""
+            echo "⚠️ bridge_generated.h not found (may not be critical)"
           fi
 
       - name: Build Rust Library
         shell: bash
         run: |
-          echo "Building Rust library..."
-          cargo build --release --features flutter --verbose
+          echo "=== Building Rust Library ==="
+          cargo build --release --verbose
 
       - name: Build Windows Release
         working-directory: ./flutter
