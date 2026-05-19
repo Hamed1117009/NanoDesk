@@ -1,317 +1,305 @@
-name: Debug Codegen Only
+name: Build Windows App
 
 on:
+  push:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  debug-codegen:
-    name: Debug Code Generation
+  build:
+    name: Build for Windows
     runs-on: windows-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Install LLVM (Method 1 - Chocolatey)
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.0"
+          channel: "stable"
+
+      - name: Install LLVM and Clang
         shell: bash
         run: |
-          echo "=== Installing LLVM via Chocolatey ==="
+          echo "=== Installing LLVM ==="
           choco install llvm -y
-          
-          echo ""
-          echo "=== Verifying installation ==="
-          ls -la "C:/Program Files/LLVM/bin/" || echo "Not found"
-          
+
+          echo "=== Setting LLVM paths ==="
+          echo "C:/Program Files/LLVM/bin" >> $GITHUB_PATH
+          echo "LLVM_PATH=C:/Program Files/LLVM" >> $GITHUB_ENV
+          echo "LIBCLANG_PATH=C:/Program Files/LLVM/bin" >> $GITHUB_ENV
+
+          echo "=== Verifying LLVM installation ==="
+          ls -la "C:/Program Files/LLVM/bin/" || echo "LLVM bin directory not found"
+
+          # چک کردن libclang
           if [ -f "C:/Program Files/LLVM/bin/libclang.dll" ]; then
             echo "✅ libclang.dll found"
           else
             echo "❌ libclang.dll NOT found"
+            find "C:/Program Files/LLVM" -name "*clang*" -type f || echo "No clang files found"
           fi
 
-      - name: Try Alternative LLVM (Method 2 - Direct Download)
-        if: always()
-        shell: bash
-        run: |
-          echo "=== Trying direct LLVM download ==="
-          
-          # دانلود LLVM 15
-          curl -L -o llvm-installer.exe "https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/LLVM-15.0.7-win64.exe"
-          
-          echo ""
-          echo "=== Installing LLVM silently ==="
-          ./llvm-installer.exe /S
-          
-          sleep 30  # صبر برای تکمیل نصب
-          
-          echo ""
-          echo "=== Checking installation ==="
-          ls -la "C:/Program Files/LLVM/bin/" || echo "Still not found"
-
-      - name: Set Environment Variables
-        shell: bash
-        run: |
-          echo "=== Setting all possible LLVM paths ==="
-          
-          # روش 1: GITHUB_PATH
-          echo "C:/Program Files/LLVM/bin" >> $GITHUB_PATH
-          
-          # روش 2: GITHUB_ENV
-          echo "LLVM_PATH=C:/Program Files/LLVM" >> $GITHUB_ENV
-          echo "LIBCLANG_PATH=C:/Program Files/LLVM/bin" >> $GITHUB_ENV
-          echo "LLVM_SYS_150_PREFIX=C:/Program Files/LLVM" >> $GITHUB_ENV
-          
-          # روش 3: مستقیم در shell
-          export PATH="C:/Program Files/LLVM/bin:$PATH"
-          export LLVM_PATH="C:/Program Files/LLVM"
-          export LIBCLANG_PATH="C:/Program Files/LLVM/bin"
-          
-          echo ""
-          echo "=== Verifying clang ==="
-          which clang || echo "clang not in PATH"
-          clang --version || echo "clang not executable"
+      - name: Install vcpkg dependencies
+        run: vcpkg integrate install
 
       - name: Install flutter_rust_bridge_codegen
         shell: bash
         run: |
-          echo "=== Installing codegen tool ==="
+          echo "=== Installing flutter_rust_bridge_codegen ==="
           cargo install flutter_rust_bridge_codegen --version 1.82.6 --force
-          
-          echo ""
-          echo "=== Verification ==="
-          which flutter_rust_bridge_codegen
-          flutter_rust_bridge_codegen --version
 
-      - name: Verify Input File
+          echo ""
+          echo "=== Verifying installation ==="
+          which flutter_rust_bridge_codegen || echo "flutter_rust_bridge_codegen not in PATH"
+          flutter_rust_bridge_codegen --version || echo "Failed to get version"
+
+          echo ""
+          echo "=== Cargo bin directory ==="
+          ls -la ~/.cargo/bin/ | grep flutter || echo "Not found in cargo bin"
+
+      - name: Install Dependencies
+        working-directory: ./flutter
+        shell: bash
+        run: flutter pub get -v > ../pub_get_log.txt 2>&1
+
+      - name: Commit and Push pub get Log
+        continue-on-error: true
+        shell: bash
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add pub_get_log.txt || true
+          git commit -m "Add pub get log [skip ci]" || true
+          git pull --rebase || true
+          git push || true
+
+      - name: Debug - Repository Structure
+        shell: bash
+        run: |
+          echo "=== Repository root ==="
+          ls -la
+
+          echo ""
+          echo "=== src/ directory ==="
+          ls -la src/ || echo "src/ not found"
+
+          echo ""
+          echo "=== flutter/ directory ==="
+          ls -la flutter/ || echo "flutter/ not found"
+
+          echo ""
+          echo "=== flutter/lib/ directory ==="
+          ls -la flutter/lib/ || echo "flutter/lib/ not found"
+
+      - name: Verify FFI File Exists
         shell: bash
         run: |
           echo "=== Checking src/flutter_ffi.rs ==="
-          
-          if [ ! -f "src/flutter_ffi.rs" ]; then
-            echo "❌ CRITICAL: src/flutter_ffi.rs NOT FOUND!"
+          if [ -f "src/flutter_ffi.rs" ]; then
+            echo "✅ src/flutter_ffi.rs found"
+            echo "File size: $(stat -c%s src/flutter_ffi.rs 2>/dev/null || stat -f%z src/flutter_ffi.rs) bytes"
             echo ""
-            echo "Repository structure:"
-            find . -name "*.rs" -type f | head -20
+            echo "First 30 lines:"
+            head -n 30 src/flutter_ffi.rs
+          else
+            echo "❌ CRITICAL: src/flutter_ffi.rs NOT found!"
+            echo ""
+            echo "Searching for flutter_ffi.rs in repository:"
+            find . -name "flutter_ffi.rs" -type f || echo "No flutter_ffi.rs found anywhere"
             exit 1
           fi
-          
-          echo "✅ File exists"
-          echo "Size: $(stat -c%s src/flutter_ffi.rs 2>/dev/null || stat -f%z src/flutter_ffi.rs) bytes"
-          echo ""
-          echo "First 50 lines:"
-          head -n 50 src/flutter_ffi.rs
 
-      - name: Test 1 - Basic Codegen
+      - name: Debug - Environment Variables
+        shell: bash
+        run: |
+          echo "=== Environment Variables ==="
+          echo "LLVM_PATH: $LLVM_PATH"
+          echo "LIBCLANG_PATH: $LIBCLANG_PATH"
+          echo "PATH: $PATH"
+          echo ""
+          echo "=== Checking clang availability ==="
+          which clang || echo "clang not in PATH"
+          clang --version || echo "clang not executable"
+
+      - name: Generate Rust Bridge Code
         shell: bash
         run: |
           echo "=========================================="
-          echo "TEST 1: Basic codegen with minimal flags"
+          echo "=== STARTING CODE GENERATION ==="
           echo "=========================================="
-          
+
+          # ایجاد دایرکتوری‌های خروجی
+          echo ""
+          echo "=== Creating output directories ==="
           mkdir -p flutter/lib
           mkdir -p src
-          
-          # تنظیم environment
-          export LLVM_PATH="C:/Program Files/LLVM"
-          export LIBCLANG_PATH="C:/Program Files/LLVM/bin"
-          export LLVM_SYS_150_PREFIX="C:/Program Files/LLVM"
-          export PATH="C:/Program Files/LLVM/bin:$PATH"
-          
-          echo "Environment:"
-          echo "  LLVM_PATH=$LLVM_PATH"
-          echo "  LIBCLANG_PATH=$LIBCLANG_PATH"
-          echo "  PATH=$PATH"
-          echo ""
-          
-          # اجرای codegen
-          set -x
-          flutter_rust_bridge_codegen \
-            --rust-input src/flutter_ffi.rs \
-            --dart-output flutter/lib/generated_bridge.dart \
-            2>&1 | tee test1_output.log
-          
-          TEST1_EXIT=$?
-          set +x
-          
-          echo ""
-          echo "Exit code: $TEST1_EXIT"
-          
-          if [ $TEST1_EXIT -eq 0 ]; then
-            echo "✅ TEST 1 PASSED"
-            
-            if [ -f "flutter/lib/generated_bridge.dart" ]; then
-              echo "✅ Output file created"
-              echo "Size: $(stat -c%s flutter/lib/generated_bridge.dart 2>/dev/null || stat -f%z flutter/lib/generated_bridge.dart) bytes"
-            else
-              echo "❌ Output file NOT created despite exit 0"
-            fi
-          else
-            echo "❌ TEST 1 FAILED with exit code $TEST1_EXIT"
-            echo ""
-            echo "Full output:"
-            cat test1_output.log
-          fi
+          ls -la flutter/lib/
 
-      - name: Test 2 - Codegen with C Header
-        if: always()
-        shell: bash
-        run: |
-          echo "=========================================="
-          echo "TEST 2: Codegen with C header output"
-          echo "=========================================="
-          
-          rm -f flutter/lib/generated_bridge.dart src/bridge_generated.h
-          
+          # تنظیم متغیرهای محیطی
+          echo ""
+          echo "=== Setting environment ==="
           export LLVM_PATH="C:/Program Files/LLVM"
           export LIBCLANG_PATH="C:/Program Files/LLVM/bin"
-          export LLVM_SYS_150_PREFIX="C:/Program Files/LLVM"
-          export PATH="C:/Program Files/LLVM/bin:$PATH"
-          
-          set -x
+          export PATH="$LLVM_PATH/bin:$PATH"
+
+          echo "LLVM_PATH: $LLVM_PATH"
+          echo "LIBCLANG_PATH: $LIBCLANG_PATH"
+
+          # اجرای codegen با لاگ کامل
+          echo ""
+          echo "=========================================="
+          echo "=== RUNNING flutter_rust_bridge_codegen ==="
+          echo "=========================================="
+
+          set -x  # فعال کردن debug mode
+
           flutter_rust_bridge_codegen \
             --rust-input src/flutter_ffi.rs \
             --dart-output flutter/lib/generated_bridge.dart \
             --c-output src/bridge_generated.h \
-            2>&1 | tee test2_output.log
-          
-          TEST2_EXIT=$?
-          set +x
-          
+            --verbose 2>&1 | tee codegen_output.log
+
+          CODEGEN_EXIT_CODE=${PIPESTATUS[0]}
+
+          set +x  # غیرفعال کردن debug mode
+
           echo ""
-          echo "Exit code: $TEST2_EXIT"
-          
-          if [ $TEST2_EXIT -eq 0 ]; then
-            echo "✅ TEST 2 PASSED"
+          echo "=========================================="
+          echo "=== CODEGEN EXIT CODE: $CODEGEN_EXIT_CODE ==="
+          echo "=========================================="
+
+          if [ $CODEGEN_EXIT_CODE -ne 0 ]; then
+            echo ""
+            echo "❌ Code generation FAILED with exit code $CODEGEN_EXIT_CODE"
+            echo ""
+            echo "=== Full codegen output ==="
+            cat codegen_output.log || echo "No log file"
+            exit $CODEGEN_EXIT_CODE
           else
-            echo "❌ TEST 2 FAILED with exit code $TEST2_EXIT"
-            cat test2_output.log
+            echo ""
+            echo "✅ Code generation completed successfully"
           fi
 
-      - name: Test 3 - Verbose Mode
-        if: always()
+      - name: Verify Generated Files
         shell: bash
         run: |
           echo "=========================================="
-          echo "TEST 3: Verbose mode"
+          echo "=== VERIFYING GENERATED FILES ==="
           echo "=========================================="
-          
-          rm -f flutter/lib/generated_bridge.dart
-          
-          export LLVM_PATH="C:/Program Files/LLVM"
-          export LIBCLANG_PATH="C:/Program Files/LLVM/bin"
-          export LLVM_SYS_150_PREFIX="C:/Program Files/LLVM"
-          export PATH="C:/Program Files/LLVM/bin:$PATH"
-          
-          set -x
-          flutter_rust_bridge_codegen \
-            --rust-input src/flutter_ffi.rs \
-            --dart-output flutter/lib/generated_bridge.dart \
-            --verbose \
-            2>&1 | tee test3_output.log
-          
-          TEST3_EXIT=$?
-          set +x
-          
-          echo ""
-          echo "Exit code: $TEST3_EXIT"
-          
-          if [ $TEST3_EXIT -eq 0 ]; then
-            echo "✅ TEST 3 PASSED"
-          else
-            echo "❌ TEST 3 FAILED with exit code $TEST3_EXIT"
-            cat test3_output.log
-          fi
 
-      - name: Test 4 - Check libclang Binding
-        if: always()
-        shell: bash
-        run: |
-          echo "=========================================="
-          echo "TEST 4: Direct libclang test"
-          echo "=========================================="
-          
-          # تست مستقیم libclang
-          cat > test_libclang.rs << 'EOF'
-fn main() {
-    match std::env::var("LIBCLANG_PATH") {
-        Ok(path) => println!("LIBCLANG_PATH: {}", path),
-        Err(_) => println!("LIBCLANG_PATH not set"),
-    }
-    
-    // تست bindgen
-    println!("Testing clang-sys...");
-}
-EOF
-          
-          rustc test_libclang.rs -o test_libclang.exe || echo "Compile failed"
-          ./test_libclang.exe || echo "Run failed"
-
-      - name: Summary Report
-        if: always()
-        shell: bash
-        run: |
-          echo "=========================================="
-          echo "DIAGNOSTIC SUMMARY"
-          echo "=========================================="
-          
           echo ""
-          echo "=== LLVM Installation ==="
-          if [ -f "C:/Program Files/LLVM/bin/libclang.dll" ]; then
-            echo "✅ libclang.dll present"
-          else
-            echo "❌ libclang.dll missing"
-          fi
-          
-          echo ""
-          echo "=== Codegen Tool ==="
-          which flutter_rust_bridge_codegen && echo "✅ In PATH" || echo "❌ Not in PATH"
-          
-          echo ""
-          echo "=== Input File ==="
-          [ -f "src/flutter_ffi.rs" ] && echo "✅ Present" || echo "❌ Missing"
-          
-          echo ""
-          echo "=== Output File ==="
+          echo "=== Checking flutter/lib/generated_bridge.dart ==="
           if [ -f "flutter/lib/generated_bridge.dart" ]; then
-            echo "✅ Generated successfully"
-            echo "Size: $(stat -c%s flutter/lib/generated_bridge.dart 2>/dev/null || stat -f%z flutter/lib/generated_bridge.dart) bytes"
+            echo "✅ generated_bridge.dart EXISTS"
+            FILE_SIZE=$(stat -c%s flutter/lib/generated_bridge.dart 2>/dev/null || stat -f%z flutter/lib/generated_bridge.dart)
+            echo "File size: $FILE_SIZE bytes"
+            
+            if [ $FILE_SIZE -eq 0 ]; then
+              echo "❌ WARNING: File is EMPTY!"
+            fi
+            
+            echo ""
+            echo "First 50 lines:"
+            head -n 50 flutter/lib/generated_bridge.dart
           else
-            echo "❌ Not generated"
+            echo "❌ CRITICAL: generated_bridge.dart NOT FOUND!"
+            echo ""
+            echo "Contents of flutter/lib/:"
+            ls -la flutter/lib/
+            echo ""
+            echo "Searching for generated_bridge.dart:"
+            find . -name "generated_bridge.dart" -type f || echo "Not found anywhere"
+            exit 1
           fi
-          
+
           echo ""
-          echo "=== Test Results ==="
-          [ -f "test1_output.log" ] && echo "Test 1: $(grep -q 'Exit code: 0' test1_output.log && echo '✅ PASS' || echo '❌ FAIL')"
-          [ -f "test2_output.log" ] && echo "Test 2: $(grep -q 'Exit code: 0' test2_output.log && echo '✅ PASS' || echo '❌ FAIL')"
-          [ -f "test3_output.log" ] && echo "Test 3: $(grep -q 'Exit code: 0' test3_output.log && echo '✅ PASS' || echo '❌ FAIL')"
+          echo "=== Checking src/bridge_generated.h ==="
+          if [ -f "src/bridge_generated.h" ]; then
+            echo "✅ bridge_generated.h EXISTS"
+            echo "File size: $(stat -c%s src/bridge_generated.h 2>/dev/null || stat -f%z src/bridge_generated.h) bytes"
+          else
+            echo "⚠️ bridge_generated.h not found (may not be critical)"
+          fi
 
-      - name: Upload All Logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: codegen-diagnostic-logs
-          path: |
-            test1_output.log
-            test2_output.log
-            test3_output.log
-            flutter/lib/generated_bridge.dart
+          echo ""
+          echo "=== Codegen output log ==="
+          if [ -f "codegen_output.log" ]; then
+            cat codegen_output.log
+          else
+            echo "No codegen_output.log found"
+          fi
 
-      - name: Commit Logs to Repo
+      - name: Build Rust Library
+        shell: bash
+        run: |
+          echo "=== Building Rust Library ==="
+          cargo build --release --verbose 2>&1 | tee rust_build.log
+
+          RUST_EXIT_CODE=${PIPESTATUS[0]}
+          echo ""
+          echo "Rust build exit code: $RUST_EXIT_CODE"
+
+          if [ $RUST_EXIT_CODE -ne 0 ]; then
+            echo "❌ Rust build FAILED"
+            exit $RUST_EXIT_CODE
+          fi
+
+      - name: Build Windows Release
+        working-directory: ./flutter
+        continue-on-error: true
+        shell: bash
+        env:
+          RENDEZVOUS_SERVER: "185.192.113.204"
+          RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
+        run: flutter build windows --release -v > ../build_log.txt 2>&1
+
+      - name: Commit and Push All Logs
         if: always()
         continue-on-error: true
         shell: bash
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          git add test*.log || true
-          git add flutter/lib/generated_bridge.dart || true
-          
-          git commit -m "Add codegen diagnostic logs [skip ci]" || true
+          git add build_log.txt codegen_output.log rust_build.log || true
+          git commit -m "Add detailed build logs [skip ci]" || true
           git pull --rebase || true
           git push || true
+
+      - name: Commit and Push EXE file to Repository
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          mkdir -p releases
+          cp -r flutter/build/windows/x64/runner/Release/* releases/ 2>/dev/null || \
+          cp -r flutter/build/windows/runner/Release/* releases/ 2>/dev/null || \
+          echo "No release files found"
+
+          git add releases/ || true
+          git commit -m "Add compiled Windows Release files [skip ci]" || true
+          git pull --rebase || true
+          git push || true
+
+      - name: Upload Output Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: NanoDesk-Windows-Release-Logs
+          path: |
+            build_log.txt
+            codegen_output.log
+            rust_build.log
+            pub_get_log.txt
+            flutter/build/windows/x64/runner/Release/
+            flutter/build/windows/runner/Release/
