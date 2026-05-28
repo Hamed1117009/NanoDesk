@@ -53,7 +53,7 @@ jobs:
 
       - name: Install vcpkg dependencies (Opus)
         run: |
-          vcpkg install opus:x64-windows-static
+          vcpkg install opus:x64-windows-static --classic
           vcpkg integrate install
 
       - name: Verify Opus Headers (Debug Step)
