@@ -189,7 +189,8 @@ def get_features(args):
         features.append('vram')
     if args.flutter:
         features.append('flutter')
-    if args.unix_file_copy-paste:
+    # این خط اصلاح شده است (خط تیره به خط زیرین تبدیل شد)
+    if args.unix_file_copy_paste:
         features.append('unix-file-copy-paste')
     if osx:
         if args.screencapturekit:
