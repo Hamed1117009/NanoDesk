@@ -53,11 +53,18 @@ jobs:
           git pull --rebase --autostash origin main
           git push
 
-      # === مرحله جدید: اجرای اسکریپت بیلد اصلی RustDesk ===
+      - name: Install LLVM
+        uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: "15.0"
+          directory: ${{ runner.temp }}/llvm
+
       - name: Run build.py (Compile Rust & Generate Bridge)
         shell: bash
         run: |
-          # این اسکریپت در روت پروژه اجرا می‌شود و کدهای Rust را کامپایل می‌کند
+          # نصب وابستگی‌های احتمالی پایتون (مثل درخواست‌های بیلد)
+          python -m pip install --upgrade pip
+          # اجرای اسکریپت بیلد
           python build.py
 
       - name: Generate Code
