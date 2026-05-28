@@ -18,7 +18,7 @@ jobs:
     env:
       VCPKG_ROOT: "C:\\vcpkg"
       VCPKG_DEFAULT_TRIPLET: "x64-windows-static"
-      BINDGEN_EXTRA_CLANG_ARGS: "-IC:/vcpkg/installed/x64-windows-static/include -IC:/vcpkg/installed/x64-windows-static/include/opus"
+      BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include -I C:/vcpkg/installed/x64-windows-static/include/opus"
       # سرورهای شما مستقیماً در همه مراحل در دسترس خواهند بود
       RENDEZVOUS_SERVER: "185.192.113.204"
       RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
@@ -56,6 +56,13 @@ jobs:
           vcpkg install opus:x64-windows-static
           vcpkg integrate install
 
+      - name: Verify Opus Headers (Debug Step)
+        shell: bash
+        run: |
+          echo "Checking for Opus headers..."
+          ls -la /c/vcpkg/installed/x64-windows-static/include/opus/ || echo "Opus directory not found!"
+          ls -la /c/vcpkg/installed/x64-windows-static/include/ || echo "Include directory not found!"
+
       - name: Install Flutter Dependencies
         working-directory: ./flutter
         shell: bash
@@ -72,6 +79,9 @@ jobs:
 
       - name: Run build.py (Compile Rust & Build Flutter Windows & Pack Portable)
         shell: bash
+        env:
+          # اطمینان از اینکه bindgen کتابخانه‌های llvm را در ویندوز پیدا می‌کند
+          LIBCLANG_PATH: ${{ runner.temp }}/llvm/lib
         run: |
           python -m pip install --upgrade pip
           # نکته کلیدی: حتماً باید --flutter ارسال شود تا نسخه فلاتر ساخته شود
