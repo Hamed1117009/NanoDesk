@@ -18,7 +18,8 @@ jobs:
     env:
       VCPKG_ROOT: "C:\\vcpkg"
       VCPKG_DEFAULT_TRIPLET: "x64-windows-static"
-      BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include -I C:/vcpkg/installed/x64-windows-static/include/opus"
+      # مسیر هدرهای aom به این متغیر اضافه شد
+      BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include -I C:/vcpkg/installed/x64-windows-static/include/opus -I C:/vcpkg/installed/x64-windows-static/include/aom"
       # سرورهای شما مستقیماً در همه مراحل در دسترس خواهند بود
       RENDEZVOUS_SERVER: "185.192.113.204"
       RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
@@ -51,9 +52,10 @@ jobs:
           version: "15.0"
           directory: ${{ runner.temp }}/llvm
 
-      - name: Install vcpkg dependencies (Opus)
+      - name: Install vcpkg dependencies (Opus, VPX, YUV, AOM)
+        # libaom به انتهای دستور اضافه شد
         run: |
-          vcpkg install opus:x64-windows-static libvpx:x64-windows-static libyuv:x64-windows-static --classic
+          vcpkg install opus:x64-windows-static libvpx:x64-windows-static libyuv:x64-windows-static libaom:x64-windows-static --classic
           vcpkg integrate install
 
       - name: Verify Opus Headers (Debug Step)
