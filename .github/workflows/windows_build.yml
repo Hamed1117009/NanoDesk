@@ -14,6 +14,11 @@ jobs:
     name: Build for Windows
     runs-on: windows-latest
 
+    # تعریف متغیرهای محیطی برای کل مراحل بیلد تا bindgen در هر مرحله‌ای مسیر هدرها را پیدا کند
+    env:
+      VCPKG_ROOT: "C:/vcpkg"
+      BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include"
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -66,9 +71,6 @@ jobs:
 
       - name: Run build.py (Compile Rust & Generate Bridge)
         shell: bash
-        env:
-          VCPKG_ROOT: C:\vcpkg
-          BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include"
         run: |
           # نصب وابستگی‌های احتمالی پایتون (مثل درخواست‌های بیلد)
           python -m pip install --upgrade pip
