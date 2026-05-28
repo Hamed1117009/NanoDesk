@@ -59,8 +59,15 @@ jobs:
           version: "15.0"
           directory: ${{ runner.temp }}/llvm
 
+      - name: Install vcpkg dependencies
+        run: |
+          vcpkg install libopus:x64-windows
+          vcpkg integrate install
+
       - name: Run build.py (Compile Rust & Generate Bridge)
         shell: bash
+        env:
+          VCPKG_ROOT: C:\vcpkg
         run: |
           # نصب وابستگی‌های احتمالی پایتون (مثل درخواست‌های بیلد)
           python -m pip install --upgrade pip
