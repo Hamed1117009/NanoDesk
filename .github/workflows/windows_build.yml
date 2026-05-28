@@ -18,7 +18,7 @@ jobs:
     env:
       VCPKG_ROOT: "C:\\vcpkg"
       VCPKG_DEFAULT_TRIPLET: "x64-windows-static"
-      BINDGEN_EXTRA_CLANG_ARGS: "-IC:\\vcpkg\\installed\\x64-windows-static\\include -IC:\\vcpkg\\installed\\x64-windows-static\\include\\opus"
+      BINDGEN_EXTRA_CLANG_ARGS: "-IC:/vcpkg/installed/x64-windows-static/include -IC:/vcpkg/installed/x64-windows-static/include/opus"
       # سرورهای شما مستقیماً در همه مراحل در دسترس خواهند بود
       RENDEZVOUS_SERVER: "185.192.113.204"
       RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
