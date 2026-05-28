@@ -61,7 +61,7 @@ jobs:
 
       - name: Install vcpkg dependencies
         run: |
-          vcpkg install libopus:x64-windows
+          vcpkg install libopus:x64-windows-static
           vcpkg integrate install
 
       - name: Run build.py (Compile Rust & Generate Bridge)
