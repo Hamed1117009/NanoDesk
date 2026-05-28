@@ -46,6 +46,13 @@ jobs:
           git pull --rebase --autostash origin main
           git push
 
+      - name: Generate Code
+        working-directory: ./flutter
+        shell: bash
+        run: |
+          flutter pub run build_runner build --delete-conflicting-outputs
+          if [ ${PIPESTATUS[0]} -ne 0 ]; then exit 1; fi
+
       - name: Build Windows Release
         working-directory: ./flutter
         shell: bash
