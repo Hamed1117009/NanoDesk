@@ -25,7 +25,7 @@ jobs:
       - name: Install C++ Dependencies (vcpkg)
         run: |
           vcpkg integrate install
-          vcpkg install opus:x64-windows-static libvpx:x64-windows-static libyuv:x64-windows-static libaom:x64-windows-static --classic
+          vcpkg install opus:x64-windows-static libvpx:x64-windows-static libyuv:x64-windows-static aom:x64-windows-static --classic
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
