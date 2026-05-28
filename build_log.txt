@@ -1,5 +1,5 @@
-[  +74 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
-[   +4 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[  +44 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[   +3 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
 [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
@@ -10,7 +10,7 @@
 [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
-[  +52 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[  +43 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
 [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
 [        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
@@ -18,7 +18,7 @@
 [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
 [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
 [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
-[   +2 ms] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
@@ -31,86 +31,36 @@
 [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
 [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
-[  +63 ms] Skipping pub get: version match.
-[  +26 ms] Found plugin window_size at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter-desktop-embedding-eb3964990cf19629c89ff8cb4a37640c7b3d5601\plugins\window_size\
+[  +58 ms] Skipping pub get: version match.
+[  +22 ms] Found plugin window_size at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter-desktop-embedding-eb3964990cf19629c89ff8cb4a37640c7b3d5601\plugins\window_size\
 [  +11 ms] Found plugin flutter_gpu_texture_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_gpu_texture_renderer-08a471bb8ceccdd50483c81cdfa8b81b07b14b87\
-[   +2 ms] Found plugin texture_rgba_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_texture_rgba_renderer-42797e0f03141dc2b585f76c64a13974508058b4\
+[   +1 ms] Found plugin texture_rgba_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_texture_rgba_renderer-42797e0f03141dc2b585f76c64a13974508058b4\
 [   +2 ms] Found plugin desktop_multi_window at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\rustdesk_desktop_multi_window-b47e8385e5a75d38319ad706a64b0ead3108b093\
 [   +2 ms] Found plugin uni_links at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\uni_links-f416118d843a7e9ed117c7bb7bdc2deda5a9e86f\uni_links\
-[   +4 ms] Found plugin window_manager at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\window_manager-85789bfe6e4cfaf4ecc00c52857467fdb7f26879\
-[  +82 ms] Found plugin desktop_drop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\desktop_drop-0.4.4\
-[   +5 ms] Found plugin device_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\device_info_plus-9.1.2\
-[  +13 ms] Found plugin external_path at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\external_path-1.0.3\
-[   +8 ms] Found plugin file_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_picker-5.5.0\
-[   +2 ms] Found plugin file_selector_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.3+2\
-[   +1 ms] Found plugin file_selector_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.4+2\
-[   +3 ms] Found plugin file_selector_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+4\
-[  +10 ms] Found plugin flutter_custom_cursor at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_custom_cursor-0.0.4\
-[   +2 ms] Found plugin flutter_keyboard_visibility at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility-5.4.1\
-[   +1 ms] Found plugin flutter_keyboard_visibility_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_linux-1.0.0\
-[   +1 ms] Found plugin flutter_keyboard_visibility_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_macos-1.0.0\
-[   +5 ms] Found plugin flutter_keyboard_visibility_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_web-2.0.0\
-[   +1 ms] Found plugin flutter_keyboard_visibility_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_windows-1.0.0\
-[   +6 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\
-[  +22 ms] Found plugin image_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.1.2\
-[   +1 ms] Found plugin image_picker_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+21\
-[   +1 ms] Found plugin image_picker_for_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.0.6\
-[   +1 ms] Found plugin image_picker_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.12+2\
-[   +1 ms] Found plugin image_picker_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.1+2\
-[   +1 ms] Found plugin image_picker_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.1+2\
-[   +2 ms] Found plugin image_picker_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.1+1\
-[  +24 ms] Found plugin package_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-4.2.0\
-[   +7 ms] Found plugin path_provider at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
-[   +1 ms] Found plugin path_provider_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.15\
-[   +1 ms] Found plugin path_provider_foundation at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.4.1\
-[   +1 ms] Found plugin path_provider_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
-[   +2 ms] Found plugin path_provider_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
-[  +17 ms] Found plugin qr_code_scanner at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\qr_code_scanner-1.0.1\
-[   +4 ms] Found plugin screen_retriever at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\screen_retriever-0.1.9\
-[   +9 ms] Found plugin sqflite at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite-2.2.0\
-[  +13 ms] Found plugin uni_links_desktop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_desktop-0.1.7\
-[   +2 ms] Found plugin uni_links_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_web-0.1.0\
-[   +2 ms] Found plugin url_launcher at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.1\
-[   +1 ms] Found plugin url_launcher_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.14\
-[   +1 ms] Found plugin url_launcher_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.3.3\
-[   +1 ms] Found plugin url_launcher_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.1\
-[   +1 ms] Found plugin url_launcher_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.2\
-[   +2 ms] Found plugin url_launcher_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.3.3\
-[   +1 ms] Found plugin url_launcher_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.4\
-[   +6 ms] Found plugin video_player at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player-2.9.5\
-[   +1 ms] Found plugin video_player_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_android-2.7.16\
-[   +1 ms] Found plugin video_player_avfoundation at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_avfoundation-2.7.1\
-[   +2 ms] Found plugin video_player_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_web-2.3.5\
-[   +3 ms] Found plugin wakelock_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\wakelock_plus-1.2.1\
-[  +60 ms] Found plugin window_size at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter-desktop-embedding-eb3964990cf19629c89ff8cb4a37640c7b3d5601\plugins\window_size\
-[   +1 ms] Found plugin flutter_gpu_texture_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_gpu_texture_renderer-08a471bb8ceccdd50483c81cdfa8b81b07b14b87\
-[   +1 ms] Found plugin texture_rgba_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_texture_rgba_renderer-42797e0f03141dc2b585f76c64a13974508058b4\
-[   +1 ms] Found plugin desktop_multi_window at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\rustdesk_desktop_multi_window-b47e8385e5a75d38319ad706a64b0ead3108b093\
-[   +1 ms] Found plugin uni_links at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\uni_links-f416118d843a7e9ed117c7bb7bdc2deda5a9e86f\uni_links\
-[   +1 ms] Found plugin window_manager at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\window_manager-85789bfe6e4cfaf4ecc00c52857467fdb7f26879\
-[  +38 ms] Found plugin desktop_drop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\desktop_drop-0.4.4\
-[   +1 ms] Found plugin device_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\device_info_plus-9.1.2\
-[   +7 ms] Found plugin external_path at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\external_path-1.0.3\
+[   +2 ms] Found plugin window_manager at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\window_manager-85789bfe6e4cfaf4ecc00c52857467fdb7f26879\
+[  +60 ms] Found plugin desktop_drop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\desktop_drop-0.4.4\
+[   +3 ms] Found plugin device_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\device_info_plus-9.1.2\
+[  +12 ms] Found plugin external_path at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\external_path-1.0.3\
 [   +5 ms] Found plugin file_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_picker-5.5.0\
 [   +1 ms] Found plugin file_selector_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.3+2\
 [   +1 ms] Found plugin file_selector_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.4+2\
 [   +2 ms] Found plugin file_selector_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+4\
-[   +5 ms] Found plugin flutter_custom_cursor at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_custom_cursor-0.0.4\
+[   +8 ms] Found plugin flutter_custom_cursor at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_custom_cursor-0.0.4\
 [   +1 ms] Found plugin flutter_keyboard_visibility at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility-5.4.1\
 [   +1 ms] Found plugin flutter_keyboard_visibility_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_linux-1.0.0\
 [   +1 ms] Found plugin flutter_keyboard_visibility_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_macos-1.0.0\
 [   +2 ms] Found plugin flutter_keyboard_visibility_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_web-2.0.0\
-[        ] Found plugin flutter_keyboard_visibility_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_windows-1.0.0\
-[   +3 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\
-[  +15 ms] Found plugin image_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.1.2\
-[   +1 ms] Found plugin image_picker_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+21\
+[   +1 ms] Found plugin flutter_keyboard_visibility_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_windows-1.0.0\
+[   +4 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\
+[  +20 ms] Found plugin image_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.1.2\
+[   +2 ms] Found plugin image_picker_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+21\
 [   +1 ms] Found plugin image_picker_for_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.0.6\
 [   +1 ms] Found plugin image_picker_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.12+2\
 [   +1 ms] Found plugin image_picker_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.1+2\
 [   +1 ms] Found plugin image_picker_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.1+2\
 [   +2 ms] Found plugin image_picker_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.1+1\
-[  +17 ms] Found plugin package_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-4.2.0\
-[   +4 ms] Found plugin path_provider at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[  +19 ms] Found plugin package_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-4.2.0\
+[   +5 ms] Found plugin path_provider at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
 [   +1 ms] Found plugin path_provider_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.15\
 [   +1 ms] Found plugin path_provider_foundation at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.4.1\
 [   +1 ms] Found plugin path_provider_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
@@ -120,21 +70,71 @@
 [   +7 ms] Found plugin sqflite at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite-2.2.0\
 [  +10 ms] Found plugin uni_links_desktop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_desktop-0.1.7\
 [   +1 ms] Found plugin uni_links_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_web-0.1.0\
-[   +2 ms] Found plugin url_launcher at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.1\
+[   +1 ms] Found plugin url_launcher at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.1\
 [   +1 ms] Found plugin url_launcher_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.14\
-[        ] Found plugin url_launcher_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.3.3\
-[        ] Found plugin url_launcher_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.1\
+[   +1 ms] Found plugin url_launcher_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.3.3\
+[   +1 ms] Found plugin url_launcher_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.1\
 [   +1 ms] Found plugin url_launcher_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.2\
 [   +1 ms] Found plugin url_launcher_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.3.3\
 [        ] Found plugin url_launcher_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.4\
 [   +5 ms] Found plugin video_player at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player-2.9.5\
-[   +1 ms] Found plugin video_player_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_android-2.7.16\
+[        ] Found plugin video_player_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_android-2.7.16\
 [        ] Found plugin video_player_avfoundation at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_avfoundation-2.7.1\
 [   +1 ms] Found plugin video_player_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_web-2.3.5\
-[   +3 ms] Found plugin wakelock_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\wakelock_plus-1.2.1\
-[  +22 ms] Generating D:\a\NanoDesk\NanoDesk\flutter\android\app\src\main\java\io\flutter\plugins\GeneratedPluginRegistrant.java
-[  +92 ms] executing: C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe -format json -products * -utf8 -latest -version 16 -requires Microsoft.VisualStudio.Workload.NativeDesktop Microsoft.VisualStudio.Component.VC.Tools.x86.x64 Microsoft.VisualStudio.Component.VC.CMake.Project
-[+12201 ms] Exit code 0 from: C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe -format json -products * -utf8 -latest -version 16 -requires Microsoft.VisualStudio.Workload.NativeDesktop Microsoft.VisualStudio.Component.VC.Tools.x86.x64 Microsoft.VisualStudio.Component.VC.CMake.Project
+[   +2 ms] Found plugin wakelock_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\wakelock_plus-1.2.1\
+[  +44 ms] Found plugin window_size at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter-desktop-embedding-eb3964990cf19629c89ff8cb4a37640c7b3d5601\plugins\window_size\
+[   +1 ms] Found plugin flutter_gpu_texture_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_gpu_texture_renderer-08a471bb8ceccdd50483c81cdfa8b81b07b14b87\
+[   +1 ms] Found plugin texture_rgba_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_texture_rgba_renderer-42797e0f03141dc2b585f76c64a13974508058b4\
+[   +1 ms] Found plugin desktop_multi_window at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\rustdesk_desktop_multi_window-b47e8385e5a75d38319ad706a64b0ead3108b093\
+[   +1 ms] Found plugin uni_links at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\uni_links-f416118d843a7e9ed117c7bb7bdc2deda5a9e86f\uni_links\
+[   +1 ms] Found plugin window_manager at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\window_manager-85789bfe6e4cfaf4ecc00c52857467fdb7f26879\
+[  +32 ms] Found plugin desktop_drop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\desktop_drop-0.4.4\
+[   +1 ms] Found plugin device_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\device_info_plus-9.1.2\
+[   +6 ms] Found plugin external_path at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\external_path-1.0.3\
+[   +5 ms] Found plugin file_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_picker-5.5.0\
+[   +1 ms] Found plugin file_selector_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.3+2\
+[   +1 ms] Found plugin file_selector_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.4+2\
+[   +1 ms] Found plugin file_selector_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+4\
+[   +4 ms] Found plugin flutter_custom_cursor at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_custom_cursor-0.0.4\
+[        ] Found plugin flutter_keyboard_visibility at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility-5.4.1\
+[   +1 ms] Found plugin flutter_keyboard_visibility_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_linux-1.0.0\
+[   +1 ms] Found plugin flutter_keyboard_visibility_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_macos-1.0.0\
+[   +1 ms] Found plugin flutter_keyboard_visibility_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_web-2.0.0\
+[        ] Found plugin flutter_keyboard_visibility_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_windows-1.0.0\
+[   +3 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\
+[  +13 ms] Found plugin image_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.1.2\
+[   +1 ms] Found plugin image_picker_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+21\
+[   +1 ms] Found plugin image_picker_for_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.0.6\
+[   +1 ms] Found plugin image_picker_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.12+2\
+[        ] Found plugin image_picker_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.1+2\
+[        ] Found plugin image_picker_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.1+2\
+[   +1 ms] Found plugin image_picker_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.1+1\
+[  +14 ms] Found plugin package_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-4.2.0\
+[   +3 ms] Found plugin path_provider at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[        ] Found plugin path_provider_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.15\
+[        ] Found plugin path_provider_foundation at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.4.1\
+[        ] Found plugin path_provider_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[   +1 ms] Found plugin path_provider_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[  +10 ms] Found plugin qr_code_scanner at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\qr_code_scanner-1.0.1\
+[   +2 ms] Found plugin screen_retriever at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\screen_retriever-0.1.9\
+[   +5 ms] Found plugin sqflite at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite-2.2.0\
+[   +8 ms] Found plugin uni_links_desktop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_desktop-0.1.7\
+[   +1 ms] Found plugin uni_links_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_web-0.1.0\
+[   +1 ms] Found plugin url_launcher at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.1\
+[   +1 ms] Found plugin url_launcher_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.14\
+[        ] Found plugin url_launcher_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.3.3\
+[        ] Found plugin url_launcher_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.1\
+[        ] Found plugin url_launcher_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.2\
+[   +1 ms] Found plugin url_launcher_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.3.3\
+[        ] Found plugin url_launcher_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.4\
+[   +3 ms] Found plugin video_player at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player-2.9.5\
+[        ] Found plugin video_player_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_android-2.7.16\
+[        ] Found plugin video_player_avfoundation at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_avfoundation-2.7.1\
+[   +1 ms] Found plugin video_player_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_web-2.3.5\
+[   +2 ms] Found plugin wakelock_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\wakelock_plus-1.2.1\
+[  +18 ms] Generating D:\a\NanoDesk\NanoDesk\flutter\android\app\src\main\java\io\flutter\plugins\GeneratedPluginRegistrant.java
+[  +83 ms] executing: C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe -format json -products * -utf8 -latest -version 16 -requires Microsoft.VisualStudio.Workload.NativeDesktop Microsoft.VisualStudio.Component.VC.Tools.x86.x64 Microsoft.VisualStudio.Component.VC.CMake.Project
+[ +362 ms] Exit code 0 from: C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe -format json -products * -utf8 -latest -version 16 -requires Microsoft.VisualStudio.Workload.NativeDesktop Microsoft.VisualStudio.Component.VC.Tools.x86.x64 Microsoft.VisualStudio.Component.VC.CMake.Project
 [        ] [
              {
                "instanceId": "bcab70bb",
@@ -188,24 +188,24 @@
                }
              }
            ]
-[   +3 ms] Building Windows application...
+[   +8 ms] Building Windows application...
 [   +3 ms] executing: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -S D:\a\NanoDesk\NanoDesk\flutter\windows -B D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64 -G Visual Studio 17 2022 -A x64 -DFLUTTER_TARGET_PLATFORM=windows-x64
-[+29868 ms] -- The CXX compiler identification is MSVC 19.44.35227.0
-[ +286 ms] -- Detecting CXX compiler ABI info
-[+1771 ms] -- Detecting CXX compiler ABI info - done
-[  +22 ms] -- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
-[  +11 ms] -- Detecting CXX compile features
-[   +7 ms] -- Detecting CXX compile features - done
-[  +96 ms] -- rustdesk lib build type: $<IF:$<CONFIG:Debug>,debug,release>
-[        ] -- Configuring done (29.4s)
-[ +524 ms] -- Generating done (0.5s)
+[+8981 ms] -- The CXX compiler identification is MSVC 19.44.35227.0
+[ +170 ms] -- Detecting CXX compiler ABI info
+[+1087 ms] -- Detecting CXX compiler ABI info - done
+[  +17 ms] -- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+[   +5 ms] -- Detecting CXX compile features
+[   +1 ms] -- Detecting CXX compile features - done
+[  +47 ms] -- rustdesk lib build type: $<IF:$<CONFIG:Debug>,debug,release>
+[        ] -- Configuring done (9.6s)
+[ +180 ms] -- Generating done (0.2s)
 [        ] -- Build files have been written to: D:/a/NanoDesk/NanoDesk/flutter/build/windows/x64
-[ +135 ms] executing: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --build D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64 --config Release --target INSTALL --verbose
-[ +146 ms] Change Dir: 'D:/a/NanoDesk/NanoDesk/flutter/build/windows/x64'
+[  +26 ms] executing: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --build D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64 --config Release --target INSTALL --verbose
+[  +56 ms] Change Dir: 'D:/a/NanoDesk/NanoDesk/flutter/build/windows/x64'
 [        ] Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/Bin/amd64/MSBuild.exe" INSTALL.vcxproj /p:Configuration=Release /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
-[  +85 ms] MSBuild version 17.14.40+3e7442088 for .NET Framework
-[  +42 ms] Build started 5/28/2026 9:05:51 AM.
-[ +260 ms] Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\INSTALL.vcxproj" on node 1 (default targets).
+[  +73 ms] MSBuild version 17.14.40+3e7442088 for .NET Framework
+[  +33 ms] Build started 5/28/2026 9:15:31 AM.
+[ +205 ms] Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\INSTALL.vcxproj" on node 1 (default targets).
 [        ] Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\INSTALL.vcxproj" (1) is building "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
 [        ] PrepareForBuild:
 [        ]   Creating directory "x64\Release\ZERO_CHECK\".
@@ -214,28 +214,28 @@
 [   +2 ms] InitializeBuildStatus:
 [        ]   Creating "x64\Release\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 [        ]   Touching "x64\Release\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild".
-[ +178 ms] CustomBuild:
+[ +104 ms] CustomBuild:
 [        ]   1>Checking Build System
-[  +69 ms] FinalizeBuildStatus:
+[  +70 ms] FinalizeBuildStatus:
 [        ]   Deleting file "x64\Release\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild".
 [        ]   Touching "x64\Release\ZERO_CHECK\ZERO_CHECK.tlog\ZERO_CHECK.lastbuildstate".
 [   +1 ms] Done Building Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\ZERO_CHECK.vcxproj" (default targets).
-[ +214 ms] Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\INSTALL.vcxproj" (1) is building "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\ALL_BUILD.vcxproj" (3) on node 1 (default targets).
+[  +94 ms] Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\INSTALL.vcxproj" (1) is building "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\ALL_BUILD.vcxproj" (3) on node 1 (default targets).
 [        ] Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\ALL_BUILD.vcxproj" (3) is building "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\runner\NanoDesk.vcxproj" (4) on node 1 (default targets).
 [        ] Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\runner\NanoDesk.vcxproj" (4) is building "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj" (5) on node 1 (default targets).
 [        ] PrepareForBuild:
 [        ]   Creating directory "x64\Release\flutter_assemble\".
-[   +2 ms]   Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+[   +1 ms]   Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
 [        ]   Creating directory "x64\Release\flutter_assemble\flutter_assemble.tlog\".
-[   +2 ms] InitializeBuildStatus:
+[   +1 ms] InitializeBuildStatus:
 [        ]   Creating "x64\Release\flutter_assemble\flutter_assemble.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 [        ]   Touching "x64\Release\flutter_assemble\flutter_assemble.tlog\unsuccessfulbuild".
-[   +1 ms] ComputeCustomBuildOutput:
+[        ] ComputeCustomBuildOutput:
 [        ]   Creating directory "D:\a\NanoDesk\NanoDesk\flutter\windows\flutter\ephemeral\cpp_client_wrapper\".
 [   +1 ms] CustomBuild:
 [        ]   "The build of 'D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\CMakeFiles\d23621d0375b6b59d95e8bedf1f397c7\flutter_assemble.rule' depends on 'D:\A\NANODESK\NANODESK\FLUTTER\WINDOWS\FLUTTER\EPHEMERAL\FLUTTER_WINDOWS.DLL' which is produced by the build of 'D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\CMakeFiles\8c5a4cebbae259dcd8acd950e5a20ecb\flutter_windows.dll.rule'. The items cannot be built in parallel."
-[  +36 ms]   Generating D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_windows.dll, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_export.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_windows.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_messenger.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_plugin_registrar.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_texture_registrar.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/core_implementations.cc, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/standard_codec.cc, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/plugin_registrar.cc, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/flutter_engine.cc, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/flutter_view_controller.cc, _phony_
-[ +539 ms]   [  +51 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[  +33 ms]   Generating D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_windows.dll, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_export.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_windows.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_messenger.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_plugin_registrar.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/flutter_texture_registrar.h, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/core_implementations.cc, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/standard_codec.cc, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/plugin_registrar.cc, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/flutter_engine.cc, D:/a/NanoDesk/NanoDesk/flutter/windows/flutter/ephemeral/cpp_client_wrapper/flutter_view_controller.cc, _phony_
+[ +501 ms]   [  +47 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
 [        ]   [   +4 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
@@ -247,7 +247,7 @@
 [        ]   [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
-[  +95 ms]   [ +103 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[  +85 ms]   [  +94 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
@@ -268,65 +268,65 @@
 [        ]   [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
 [        ]   [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
-[  +20 ms]   [  +21 ms] Initializing file store
+[  +20 ms]   [  +20 ms] Initializing file store
 [  +18 ms]   [  +18 ms] Skipping target: gen_localizations
 [  +11 ms]   [  +11 ms] gen_dart_plugin_registrant: Starting due to {InvalidatedReasonKind.inputChanged: The following inputs have updated contents: D:\a\NanoDesk\NanoDesk\flutter\.dart_tool\package_config_subset}
-[   +8 ms]   [   +8 ms] unpack_windows: Starting due to {}
-[ +130 ms]   [ +130 ms] unpack_windows: Complete
-[+2328 ms]   [+2328 ms] Found plugin window_size at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter-desktop-embedding-eb3964990cf19629c89ff8cb4a37640c7b3d5601\plugins\window_size\
-[  +11 ms]   [  +11 ms] Found plugin flutter_gpu_texture_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_gpu_texture_renderer-08a471bb8ceccdd50483c81cdfa8b81b07b14b87\
+[   +7 ms]   [   +7 ms] unpack_windows: Starting due to {}
+[ +132 ms]   [ +131 ms] unpack_windows: Complete
+[+2639 ms]   [+2639 ms] Found plugin window_size at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter-desktop-embedding-eb3964990cf19629c89ff8cb4a37640c7b3d5601\plugins\window_size\
+[  +10 ms]   [  +11 ms] Found plugin flutter_gpu_texture_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_gpu_texture_renderer-08a471bb8ceccdd50483c81cdfa8b81b07b14b87\
 [   +2 ms]   [   +2 ms] Found plugin texture_rgba_renderer at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\flutter_texture_rgba_renderer-42797e0f03141dc2b585f76c64a13974508058b4\
-[   +3 ms]   [   +2 ms] Found plugin desktop_multi_window at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\rustdesk_desktop_multi_window-b47e8385e5a75d38319ad706a64b0ead3108b093\
+[   +2 ms]   [   +2 ms] Found plugin desktop_multi_window at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\rustdesk_desktop_multi_window-b47e8385e5a75d38319ad706a64b0ead3108b093\
 [   +2 ms]   [   +2 ms] Found plugin uni_links at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\uni_links-f416118d843a7e9ed117c7bb7bdc2deda5a9e86f\uni_links\
 [   +4 ms]   [   +4 ms] Found plugin window_manager at C:\Users\runneradmin\AppData\Local\Pub\Cache\git\window_manager-85789bfe6e4cfaf4ecc00c52857467fdb7f26879\
-[  +57 ms]   [  +58 ms] Found plugin desktop_drop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\desktop_drop-0.4.4\
+[  +53 ms]   [  +53 ms] Found plugin desktop_drop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\desktop_drop-0.4.4\
 [   +2 ms]   [   +2 ms] Found plugin device_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\device_info_plus-9.1.2\
-[  +13 ms]   [  +13 ms] Found plugin external_path at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\external_path-1.0.3\
-[   +6 ms]   [   +6 ms] Found plugin file_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_picker-5.5.0\
+[  +14 ms]   [  +14 ms] Found plugin external_path at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\external_path-1.0.3\
+[   +5 ms]   [   +5 ms] Found plugin file_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_picker-5.5.0\
 [   +1 ms]   [   +1 ms] Found plugin file_selector_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.3+2\
-[   +2 ms]   [   +2 ms] Found plugin file_selector_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.4+2\
-[   +2 ms]   [   +3 ms] Found plugin file_selector_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+4\
-[  +10 ms]   [  +10 ms] Found plugin flutter_custom_cursor at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_custom_cursor-0.0.4\
+[   +1 ms]   [   +1 ms] Found plugin file_selector_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.4+2\
+[   +2 ms]   [   +2 ms] Found plugin file_selector_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+4\
+[  +11 ms]   [  +11 ms] Found plugin flutter_custom_cursor at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_custom_cursor-0.0.4\
 [   +1 ms]   [   +1 ms] Found plugin flutter_keyboard_visibility at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility-5.4.1\
 [   +1 ms]   [   +1 ms] Found plugin flutter_keyboard_visibility_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_linux-1.0.0\
 [   +1 ms]   [   +1 ms] Found plugin flutter_keyboard_visibility_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_macos-1.0.0\
 [   +2 ms]   [   +2 ms] Found plugin flutter_keyboard_visibility_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_web-2.0.0\
 [   +1 ms]   [   +1 ms] Found plugin flutter_keyboard_visibility_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_keyboard_visibility_windows-1.0.0\
-[   +6 ms]   [   +6 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\
-[  +20 ms]   [  +20 ms] Found plugin image_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.1.2\
+[   +5 ms]   [   +4 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\
+[  +19 ms]   [  +19 ms] Found plugin image_picker at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.1.2\
 [   +1 ms]   [   +1 ms] Found plugin image_picker_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+21\
 [   +1 ms]   [   +1 ms] Found plugin image_picker_for_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.0.6\
-[   +1 ms]   [   +1 ms] Found plugin image_picker_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.12+2\
-[   +1 ms]   [   +1 ms] Found plugin image_picker_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.1+2\
+[   +2 ms]   [   +1 ms] Found plugin image_picker_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.12+2\
+[   +1 ms]   [   +2 ms] Found plugin image_picker_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.1+2\
 [   +1 ms]   [   +1 ms] Found plugin image_picker_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.1+2\
-[   +3 ms]   [   +3 ms] Found plugin image_picker_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.1+1\
-[  +20 ms]   [  +20 ms] Found plugin package_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-4.2.0\
-[   +6 ms]   [   +6 ms] Found plugin path_provider at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[   +2 ms]   [   +2 ms] Found plugin image_picker_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.1+1\
+[  +19 ms]   [  +19 ms] Found plugin package_info_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-4.2.0\
+[   +5 ms]   [   +5 ms] Found plugin path_provider at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
 [   +1 ms]   [   +1 ms] Found plugin path_provider_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.15\
 [   +1 ms]   [   +1 ms] Found plugin path_provider_foundation at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.4.1\
 [   +1 ms]   [   +1 ms] Found plugin path_provider_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
 [   +2 ms]   [   +2 ms] Found plugin path_provider_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
-[  +12 ms]   [  +12 ms] Found plugin qr_code_scanner at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\qr_code_scanner-1.0.1\
-[   +4 ms]   [   +4 ms] Found plugin screen_retriever at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\screen_retriever-0.1.9\
-[   +8 ms]   [   +7 ms] Found plugin sqflite at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite-2.2.0\
-[  +11 ms]   [  +11 ms] Found plugin uni_links_desktop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_desktop-0.1.7\
-[   +2 ms]   [   +2 ms] Found plugin uni_links_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_web-0.1.0\
+[  +13 ms]   [  +12 ms] Found plugin qr_code_scanner at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\qr_code_scanner-1.0.1\
+[   +3 ms]   [   +3 ms] Found plugin screen_retriever at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\screen_retriever-0.1.9\
+[   +6 ms]   [   +6 ms] Found plugin sqflite at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite-2.2.0\
+[  +10 ms]   [  +10 ms] Found plugin uni_links_desktop at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_desktop-0.1.7\
+[   +1 ms]   [   +1 ms] Found plugin uni_links_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\uni_links_web-0.1.0\
 [   +1 ms]   [   +1 ms] Found plugin url_launcher at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.1\
 [   +1 ms]   [   +1 ms] Found plugin url_launcher_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.14\
 [   +1 ms]   [   +1 ms] Found plugin url_launcher_ios at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.3.3\
 [   +1 ms]   [   +1 ms] Found plugin url_launcher_linux at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.1\
-[        ]   [   +1 ms] Found plugin url_launcher_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.2\
+[   +1 ms]   [   +1 ms] Found plugin url_launcher_macos at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.2\
 [   +1 ms]   [   +1 ms] Found plugin url_launcher_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.3.3\
 [   +1 ms]   [   +1 ms] Found plugin url_launcher_windows at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.4\
-[   +5 ms]   [   +5 ms] Found plugin video_player at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player-2.9.5\
+[   +4 ms]   [   +4 ms] Found plugin video_player at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player-2.9.5\
 [   +1 ms]   [   +1 ms] Found plugin video_player_android at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_android-2.7.16\
 [   +1 ms]   [   +1 ms] Found plugin video_player_avfoundation at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_avfoundation-2.7.1\
 [   +1 ms]   [   +1 ms] Found plugin video_player_web at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_web-2.3.5\
 [   +2 ms]   [   +2 ms] Found plugin wakelock_plus at C:\Users\runneradmin\AppData\Local\Pub\Cache\hosted\pub.dev\wakelock_plus-1.2.1\
-[  +40 ms]   [  +40 ms] gen_dart_plugin_registrant: Complete
+[  +39 ms]   [  +39 ms] gen_dart_plugin_registrant: Complete
 [   +1 ms]   [   +1 ms] kernel_snapshot_program: Starting due to {}
-[  +12 ms]   [  +12 ms] C:\hostedtoolcache\windows\flutter\stable-3.24.0-x64\flutter\bin\cache\dart-sdk\bin\dartaotruntime.exe --disable-dart-dev C:\hostedtoolcache\windows\flutter\stable-3.24.0-x64\flutter\bin\cache\dart-sdk\bin\snapshots\frontend_server_aot.dart.snapshot --sdk-root C:\hostedtoolcache\windows\flutter\stable-3.24.0-x64\flutter\bin\cache\artifacts\engine\common\flutter_patched_sdk_product/ --target=flutter --no-print-incremental-dependencies -Ddart.vm.profile=false -Ddart.vm.product=true --delete-tostring-package-uri=dart:ui --delete-tostring-package-uri=package:flutter --aot --tfa --target-os windows --packages D:\a\NanoDesk\NanoDesk\flutter\.dart_tool\package_config.json --output-dill D:\a\NanoDesk\NanoDesk\flutter\.dart_tool\flutter_build\e7ef23815d8cb5bfac1797f1cf34c162\program.dill --depfile D:\a\NanoDesk\NanoDesk\flutter\.dart_tool\flutter_build\e7ef23815d8cb5bfac1797f1cf34c162\kernel_snapshot_program.d --source file:///D:/a/NanoDesk/NanoDesk/flutter/.dart_tool/flutter_build/dart_plugin_registrant.dart --source package:flutter/src/dart_plugin_registrant.dart -Dflutter.dart_plugin_registrant=file:///D:/a/NanoDesk/NanoDesk/flutter/.dart_tool/flutter_build/dart_plugin_registrant.dart --verbosity=error package:flutter_hbb/main.dart
-[ +451 ms] [ +428 ms] lib/models/platform_model.dart(2,8): error GFAA2A68C: Error when reading 'lib/generated_bridge.dart': The system cannot find the file specified. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[  +12 ms]   [  +11 ms] C:\hostedtoolcache\windows\flutter\stable-3.24.0-x64\flutter\bin\cache\dart-sdk\bin\dartaotruntime.exe --disable-dart-dev C:\hostedtoolcache\windows\flutter\stable-3.24.0-x64\flutter\bin\cache\dart-sdk\bin\snapshots\frontend_server_aot.dart.snapshot --sdk-root C:\hostedtoolcache\windows\flutter\stable-3.24.0-x64\flutter\bin\cache\artifacts\engine\common\flutter_patched_sdk_product/ --target=flutter --no-print-incremental-dependencies -Ddart.vm.profile=false -Ddart.vm.product=true --delete-tostring-package-uri=dart:ui --delete-tostring-package-uri=package:flutter --aot --tfa --target-os windows --packages D:\a\NanoDesk\NanoDesk\flutter\.dart_tool\package_config.json --output-dill D:\a\NanoDesk\NanoDesk\flutter\.dart_tool\flutter_build\e7ef23815d8cb5bfac1797f1cf34c162\program.dill --depfile D:\a\NanoDesk\NanoDesk\flutter\.dart_tool\flutter_build\e7ef23815d8cb5bfac1797f1cf34c162\kernel_snapshot_program.d --source file:///D:/a/NanoDesk/NanoDesk/flutter/.dart_tool/flutter_build/dart_plugin_registrant.dart --source package:flutter/src/dart_plugin_registrant.dart -Dflutter.dart_plugin_registrant=file:///D:/a/NanoDesk/NanoDesk/flutter/.dart_tool/flutter_build/dart_plugin_registrant.dart --verbosity=error package:flutter_hbb/main.dart
+[ +434 ms] [ +423 ms] lib/models/platform_model.dart(2,8): error GFAA2A68C: Error when reading 'lib/generated_bridge.dart': The system cannot find the file specified. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [   +1 ms]   [   +1 ms] import 'package:flutter_hbb/generated_bridge.dart'
 [        ]   [        ]        ^
 [        ] [        ] lib/models/model.dart(50,8): error GFAA2A68C: Error when reading 'lib/generated_bridge.dart': The system cannot find the file specified. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
@@ -335,10 +335,10 @@
 [        ] [        ] lib/models/native_model.dart(16,8): error GFAA2A68C: Error when reading 'lib/generated_bridge.dart': The system cannot find the file specified. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] import '../generated_bridge.dart';
 [        ]   [        ]        ^
-[+2071 ms] [+2093 ms] lib/models/platform_model.dart(8,1): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[+2024 ms] [+2036 ms] lib/models/platform_model.dart(8,1): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] RustdeskImpl get bind => platformFFI.ffiBind;
 [        ]   [        ] ^^^^^^^^^^^^
-[   +6 ms] [   +6 ms] lib/models/native_model.dart(35,8): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[   +7 ms] [   +7 ms] lib/models/native_model.dart(35,8): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]   late RustdeskImpl _ffiBind;
 [        ]   [        ]        ^^^^^^^^^^^^
 [        ] [        ] lib/models/native_model.dart(44,3): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
@@ -347,10 +347,10 @@
 [        ] [        ] lib/models/native_model.dart(242,26): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]   void _startListenEvent(RustdeskImpl rustdeskImpl) {
 [        ]   [        ]                          ^^^^^^^^^^^^
-[+2301 ms] [+2301 ms] lib/common.dart(2021,48): error GC2F972A8: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[+2332 ms] [+2331 ms] lib/common.dart(2021,48): error GC2F972A8: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]   var lpos = LastWindowPosition.loadFromString(pos);
 [        ]   [        ]                                                ^
-[ +962 ms] [ +962 ms] lib/models/model.dart(3772,23): error G1D2B1123: 'EventToUI' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[ +850 ms] [ +850 ms] lib/models/model.dart(3772,23): error G1D2B1123: 'EventToUI' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]     late final Stream<EventToUI> stream;
 [        ]   [        ]                       ^^^^^^^^^
 [        ] [        ] lib/models/model.dart(3825,24): error GBAFEC12A: 'EventToUI_Event' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
@@ -359,10 +359,10 @@
 [        ] [        ] lib/models/model.dart(3841,31): error GACE86540: 'EventToUI_Rgba' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]         } else if (message is EventToUI_Rgba) {
 [        ]   [        ]                               ^^^^^^^^^^^^^^
-[   +1 ms] [   +1 ms] lib/models/model.dart(3856,31): error G72B918CB: 'EventToUI_Texture' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ] [        ] lib/models/model.dart(3856,31): error G72B918CB: 'EventToUI_Texture' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]         } else if (message is EventToUI_Texture) {
 [        ]   [        ]                               ^^^^^^^^^^^^^^^^^
-[  +62 ms] [  +61 ms] lib/desktop/pages/desktop_setting_page.dart(1771,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[  +54 ms] [  +53 ms] lib/desktop/pages/desktop_setting_page.dart(1771,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]           onChanged: isOptFixed ? null : onChanged),
 [        ]   [        ]                                 ^
@@ -382,11 +382,11 @@
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]             onChanged: isOptFixed ? null : onChanged),
 [        ]   [        ]                                   ^
-[   +1 ms] [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1841,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ] [        ] lib/desktop/pages/desktop_setting_page.dart(1841,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]           onChanged: isOptFixed ? null : onChanged),
 [        ]   [        ]                                 ^
-[        ] [        ] lib/desktop/pages/desktop_setting_page.dart(1846,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[   +1 ms] [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1846,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]           onChanged: isOptFixed ? null : onChanged),
 [        ]   [        ]                                 ^
@@ -398,7 +398,7 @@
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]           onChanged: isOptFixed ? null : onChanged),
 [        ]   [        ]                                 ^
-[   +1 ms] [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1904,35): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[   +6 ms] [        ] lib/desktop/pages/desktop_setting_page.dart(1904,35): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]             onChanged: isOptFixed ? null : onChanged));
 [        ]   [        ]                                   ^
@@ -414,24 +414,24 @@
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]           onChanged: isOptFixed ? null : onChanged),
 [        ]   [        ]                                 ^
-[   +2 ms] [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1931,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ] [        ] lib/desktop/pages/desktop_setting_page.dart(1931,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]           onChanged: isOptFixed ? null : onChanged),
 [        ]   [        ]                                 ^
-[   +1 ms] [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1936,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ] [        ] lib/desktop/pages/desktop_setting_page.dart(1936,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]           onChanged: isOptFixed ? null : onChanged),
-[        ]   [   +1 ms]                                 ^
-[ +475 ms] [ +474 ms] lib/desktop/widgets/remote_toolbar.dart(68,41): error GC2F972A8: The argument type 'List<dynamic>' can't be assigned to the parameter type 'Iterable<Future<dynamic>>'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [        ]                                 ^
+[ +529 ms] [ +532 ms] lib/desktop/widgets/remote_toolbar.dart(68,41): error GC2F972A8: The argument type 'List<dynamic>' can't be assigned to the parameter type 'Iterable<Future<dynamic>>'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]  - 'List' is from 'dart:core'.
 [        ]   [        ]  - 'Iterable' is from 'dart:core'.
 [        ]   [        ]  - 'Future' is from 'dart:async'.
 [        ]   [        ]       final results = await Future.wait([
 [        ]   [        ]                                         ^
-[  +50 ms] [  +51 ms] lib/common/widgets/dialog.dart(1369,21): error G44692867: A value of type 'String?' can't be assigned to a variable of type 'String' because 'String?' is nullable and 'String' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[  +45 ms] [  +46 ms] lib/common/widgets/dialog.dart(1369,21): error G44692867: A value of type 'String?' can't be assigned to a variable of type 'String' because 'String?' is nullable and 'String' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]   controller.text = osPassword;
 [        ]   [        ]                     ^
-[  +11 ms] [  +11 ms] lib/models/native_model.dart(35,8): error G4FA4B0A1: 'RustdeskImpl' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[  +10 ms] [  +11 ms] lib/models/native_model.dart(35,8): error G4FA4B0A1: 'RustdeskImpl' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]   late RustdeskImpl _ffiBind;
 [        ]   [        ]        ^^^^^^^^^^^^
 [   +1 ms] [   +1 ms] lib/models/native_model.dart(142,18): error GE5CFE876: The method 'RustdeskImpl' isn't defined for the class 'PlatformFFI'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
@@ -442,19 +442,19 @@
 [        ] [        ] lib/models/native_model.dart(242,26): error G4FA4B0A1: 'RustdeskImpl' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]   void _startListenEvent(RustdeskImpl rustdeskImpl) {
 [        ]   [        ]                          ^^^^^^^^^^^^
-[+1111 ms] [+1110 ms] lib/common/widgets/toolbar.dart(549,39): error G44692867: A value of type 'bool?' can't be assigned to a variable of type 'bool' because 'bool?' is nullable and 'bool' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[+1014 ms] [+1013 ms] lib/common/widgets/toolbar.dart(549,39): error G44692867: A value of type 'bool?' can't be assigned to a variable of type 'bool' because 'bool?' is nullable and 'bool' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ]           showCursorLockState.value = value;
 [        ]   [        ]                                       ^
 [        ]   [        ] lib/common/widgets/toolbar.dart:547:11: Context: Variable 'value' could not be promoted due to an assignment.
 [        ]   [        ] Try null checking the variable after the assignment.  See http://dart.dev/go/non-promo-write
 [        ]   [        ]           value = bind.sessionGetToggleOptionSync(
 [        ]   [        ]           ^
-[+7878 ms]   [+7879 ms] Persisting file store
+[+8145 ms]   [+8145 ms] Persisting file store
 [   +2 ms]   [   +3 ms] Done persisting file store
-[   +2 ms]   [   +2 ms] Target kernel_snapshot_program failed: Exception
+[   +2 ms]   [   +3 ms] Target kernel_snapshot_program failed: Exception
 [        ]              #0      KernelSnapshotProgram.build (package:flutter_tools/src/build_system/targets/common.dart:276:7)
-[        ]              <asynchronous suspension>
-[        ]              #1      _BuildInstance._invokeInternal (package:flutter_tools/src/build_system/build_system.dart:875:9)
+[   +1 ms]              <asynchronous suspension>
+[   +2 ms]              #1      _BuildInstance._invokeInternal (package:flutter_tools/src/build_system/build_system.dart:875:9)
 [        ]              <asynchronous suspension>
 [        ]              #2      Future.wait.<anonymous closure> (dart:async/future.dart:534:21)
 [        ]              <asynchronous suspension>
@@ -502,8 +502,8 @@
 [        ]              <asynchronous suspension>
 [        ]              #24     main (package:flutter_tools/executable.dart:93:3)
 [        ]              <asynchronous suspension>
-[   +4 ms]   [  +11 ms] "flutter assemble" took 18,396ms.
-[   +3 ms]   [   +2 ms] 
+[   +6 ms]   [  +13 ms] "flutter assemble" took 18,735ms.
+[   +3 ms]   [   +3 ms] 
 [        ]              #0      throwToolExit (package:flutter_tools/src/base/common.dart:10:3)
 [        ]              #1      AssembleCommand.runCommand (package:flutter_tools/src/commands/assemble.dart:345:7)
 [        ]              <asynchronous suspension>
@@ -525,61 +525,61 @@
 [        ]              <asynchronous suspension>
 [        ]              #10     main (package:flutter_tools/executable.dart:93:3)
 [        ]              <asynchronous suspension>
-[        ]   [        ] ensureAnalyticsSent: 0ms
+[        ]   [   +2 ms] ensureAnalyticsSent: 0ms
 [        ]   [        ] Running 1 shutdown hook
 [        ]   [        ] Shutdown hooks complete
 [        ]   [        ] exiting with code 1
-[  +35 ms] C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(254,5): error MSB8066: Custom build for 'D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\CMakeFiles\8c5a4cebbae259dcd8acd950e5a20ecb\flutter_windows.dll.rule;D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\CMakeFiles\d23621d0375b6b59d95e8bedf1f397c7\flutter_assemble.rule;D:\a\NanoDesk\NanoDesk\flutter\windows\flutter\CMakeLists.txt' exited with code 1. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[  +22 ms] Done Building Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj" (default targets) -- FAILED.
-[   +7 ms] Done Building Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\runner\NanoDesk.vcxproj" (default targets) -- FAILED.
-[ +269 ms] Done Building Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\ALL_BUILD.vcxproj" (default targets) -- FAILED.
+[  +45 ms] C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(254,5): error MSB8066: Custom build for 'D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\CMakeFiles\8c5a4cebbae259dcd8acd950e5a20ecb\flutter_windows.dll.rule;D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\CMakeFiles\d23621d0375b6b59d95e8bedf1f397c7\flutter_assemble.rule;D:\a\NanoDesk\NanoDesk\flutter\windows\flutter\CMakeLists.txt' exited with code 1. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[ +207 ms] Done Building Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj" (default targets) -- FAILED.
+[   +2 ms] Done Building Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\runner\NanoDesk.vcxproj" (default targets) -- FAILED.
+[ +352 ms] Done Building Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\ALL_BUILD.vcxproj" (default targets) -- FAILED.
 [        ] Done Building Project "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\INSTALL.vcxproj" (default targets) -- FAILED.
-[  +14 ms] Build FAILED.
-[   +3 ms] "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\INSTALL.vcxproj" (default target) (1) ->
+[ +150 ms] Build FAILED.
+[  +46 ms] "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\INSTALL.vcxproj" (default target) (1) ->
 [        ] "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\ALL_BUILD.vcxproj" (default target) (3) ->
 [        ] "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\runner\NanoDesk.vcxproj" (default target) (4) ->
 [        ] "D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj" (default target) (5) ->
 [        ] (CustomBuild target) -> 
-[        ]   [ +428 ms] lib/models/platform_model.dart(2,8): error GFAA2A68C: Error when reading 'lib/generated_bridge.dart': The system cannot find the file specified. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [ +423 ms] lib/models/platform_model.dart(2,8): error GFAA2A68C: Error when reading 'lib/generated_bridge.dart': The system cannot find the file specified. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/models/model.dart(50,8): error GFAA2A68C: Error when reading 'lib/generated_bridge.dart': The system cannot find the file specified. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/models/native_model.dart(16,8): error GFAA2A68C: Error when reading 'lib/generated_bridge.dart': The system cannot find the file specified. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [+2093 ms] lib/models/platform_model.dart(8,1): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [   +6 ms] lib/models/native_model.dart(35,8): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [+2036 ms] lib/models/platform_model.dart(8,1): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [   +7 ms] lib/models/native_model.dart(35,8): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/models/native_model.dart(44,3): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/models/native_model.dart(242,26): error G5FE39F1E: Type 'RustdeskImpl' not found. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [+2301 ms] lib/common.dart(2021,48): error GC2F972A8: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [ +962 ms] lib/models/model.dart(3772,23): error G1D2B1123: 'EventToUI' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [+2331 ms] lib/common.dart(2021,48): error GC2F972A8: The argument type 'String?' can't be assigned to the parameter type 'String' because 'String?' is nullable and 'String' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [ +850 ms] lib/models/model.dart(3772,23): error G1D2B1123: 'EventToUI' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/models/model.dart(3825,24): error GBAFEC12A: 'EventToUI_Event' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/models/model.dart(3841,31): error GACE86540: 'EventToUI_Rgba' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [   +1 ms] lib/models/model.dart(3856,31): error G72B918CB: 'EventToUI_Texture' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [  +61 ms] lib/desktop/pages/desktop_setting_page.dart(1771,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [        ] lib/models/model.dart(3856,31): error G72B918CB: 'EventToUI_Texture' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [  +53 ms] lib/desktop/pages/desktop_setting_page.dart(1771,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1776,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1801,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1806,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1812,35): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1841,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1846,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1841,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1846,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1851,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1856,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1904,35): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1904,35): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1911,35): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1921,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1926,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1931,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [   +1 ms] lib/desktop/pages/desktop_setting_page.dart(1936,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [ +474 ms] lib/desktop/widgets/remote_toolbar.dart(68,41): error GC2F972A8: The argument type 'List<dynamic>' can't be assigned to the parameter type 'Iterable<Future<dynamic>>'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [  +51 ms] lib/common/widgets/dialog.dart(1369,21): error G44692867: A value of type 'String?' can't be assigned to a variable of type 'String' because 'String?' is nullable and 'String' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1931,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [        ] lib/desktop/pages/desktop_setting_page.dart(1936,33): error GC2F972A8: The argument type 'Future<Null> Function(String)?' can't be assigned to the parameter type 'dynamic Function(dynamic)?'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [ +532 ms] lib/desktop/widgets/remote_toolbar.dart(68,41): error GC2F972A8: The argument type 'List<dynamic>' can't be assigned to the parameter type 'Iterable<Future<dynamic>>'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [  +46 ms] lib/common/widgets/dialog.dart(1369,21): error G44692867: A value of type 'String?' can't be assigned to a variable of type 'String' because 'String?' is nullable and 'String' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [  +11 ms] lib/models/native_model.dart(35,8): error G4FA4B0A1: 'RustdeskImpl' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [   +1 ms] lib/models/native_model.dart(142,18): error GE5CFE876: The method 'RustdeskImpl' isn't defined for the class 'PlatformFFI'. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   [        ] lib/models/native_model.dart(242,26): error G4FA4B0A1: 'RustdeskImpl' isn't a type. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
-[        ]   [+1110 ms] lib/common/widgets/toolbar.dart(549,39): error G44692867: A value of type 'bool?' can't be assigned to a variable of type 'bool' because 'bool?' is nullable and 'bool' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
+[        ]   [+1013 ms] lib/common/widgets/toolbar.dart(549,39): error G44692867: A value of type 'bool?' can't be assigned to a variable of type 'bool' because 'bool?' is nullable and 'bool' isn't. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]   C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(254,5): error MSB8066: Custom build for 'D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\CMakeFiles\8c5a4cebbae259dcd8acd950e5a20ecb\flutter_windows.dll.rule;D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\CMakeFiles\d23621d0375b6b59d95e8bedf1f397c7\flutter_assemble.rule;D:\a\NanoDesk\NanoDesk\flutter\windows\flutter\CMakeLists.txt' exited with code 1. [D:\a\NanoDesk\NanoDesk\flutter\build\windows\x64\flutter\flutter_assemble.vcxproj]
 [        ]     0 Warning(s)
 [        ]     34 Error(s)
-[        ] Time Elapsed 00:00:20.05
-[  +27 ms] Building Windows application... (completed in 53.1s)
-[        ] "flutter windows" took 66,161ms.
-[   +2 ms] Build process failed.
+[        ] Time Elapsed 00:00:20.51
+[  +42 ms] Building Windows application... (completed in 31.3s)
+[   +1 ms] "flutter windows" took 32,369ms.
+[   +3 ms] Build process failed.
 [        ] 
            #0      throwToolExit (package:flutter_tools/src/base/common.dart:10:3)
            #1      _runBuild (package:flutter_tools/src/windows/build_windows.dart:266:5)
