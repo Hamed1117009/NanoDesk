@@ -68,6 +68,7 @@ jobs:
         shell: bash
         env:
           VCPKG_ROOT: C:\vcpkg
+          BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include"
         run: |
           # نصب وابستگی‌های احتمالی پایتون (مثل درخواست‌های بیلد)
           python -m pip install --upgrade pip
