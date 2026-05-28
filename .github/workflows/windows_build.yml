@@ -43,7 +43,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add pub_get_log.txt
           git commit -m "Add pub get log" || echo "No changes to commit"
-          git pull --rebase origin main
+          git pull --rebase --autostash origin main
           git push
 
       - name: Build Windows Release
@@ -64,7 +64,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add build_log.txt
           git commit -m "Add build log" || echo "No changes to commit"
-          git pull --rebase origin main
+          git pull --rebase --autostash origin main
           git push
 
       - name: Commit and Push EXE file to Repository
@@ -75,6 +75,7 @@ jobs:
           cp -r flutter/build/windows/runner/Release/* releases/ || echo "No EXE found to copy"
           git add releases/
           git commit -m "Add compiled EXE files" || echo "No changes to commit"
+          git pull --rebase --autostash origin main
           git push
 
       - name: Upload Output Artifact
