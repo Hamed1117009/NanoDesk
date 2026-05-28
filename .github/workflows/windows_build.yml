@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive # <--- این بخش برای دانلود ساب‌ماژول‌های Rust اضافه شد
 
       - name: Setup Python
         uses: actions/setup-python@v5
