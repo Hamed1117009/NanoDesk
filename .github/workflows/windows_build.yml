@@ -10,7 +10,6 @@ jobs:
   build:
     runs-on: windows-latest
 
-    # تعریف متغیرهای محیطی برای اجرای صحیح bindgen در Rust
     env:
       LIBCLANG_PATH: "C:/Program Files/LLVM/bin"
       BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include"
@@ -30,7 +29,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.24.0" # یا نسخه دلخواه شما
+          flutter-version: "3.24.0"
           channel: "stable"
 
       - name: Install Flutter Dependencies
@@ -38,15 +37,18 @@ jobs:
         run: flutter pub get
 
       - name: Run Build Runner
+        working-directory: ./flutter # <--- این خط اضافه شد
         run: dart run build_runner build --delete-conflicting-outputs
 
       - name: Build Windows App (Release)
+        working-directory: ./flutter # <--- این خط اضافه شد
         run: flutter build windows --release
 
       - name: Prepare Release Directory
         run: |
           mkdir -p releases
-          cp -r build/windows/x64/runner/Release/* releases/
+          # مسیر بیلد اصلاح شد تا پوشه flutter را در نظر بگیرد
+          cp -r flutter/build/windows/x64/runner/Release/* releases/
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v4
