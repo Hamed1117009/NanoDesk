@@ -14,18 +14,20 @@ jobs:
     name: Build for Windows
     runs-on: windows-latest
 
-    # تعریف متغیرهای محیطی برای کل مراحل بیلد تا bindgen در هر مرحله‌ای مسیر هدرها را پیدا کند
-    # تغییرات: اضافه شدن VCPKG_DEFAULT_TRIPLET، استفاده از بک‌اسلش و اضافه شدن مسیر دقیق opus
+    # تعریف متغیرهای محیطی برای کل مراحل بیلد
     env:
       VCPKG_ROOT: "C:\\vcpkg"
       VCPKG_DEFAULT_TRIPLET: "x64-windows-static"
       BINDGEN_EXTRA_CLANG_ARGS: "-IC:\\vcpkg\\installed\\x64-windows-static\\include -IC:\\vcpkg\\installed\\x64-windows-static\\include\\opus"
+      # سرورهای شما مستقیماً در همه مراحل در دسترس خواهند بود
+      RENDEZVOUS_SERVER: "185.192.113.204"
+      RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive # <--- این بخش برای دانلود ساب‌ماژول‌های Rust اضافه شد
+          submodules: recursive
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -43,76 +45,58 @@ jobs:
           flutter-version: "3.24.0"
           channel: "stable"
 
-      - name: Install Dependencies
+      - name: Install LLVM (Required for bindgen)
+        uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: "15.0"
+          directory: ${{ runner.temp }}/llvm
+
+      - name: Install vcpkg dependencies (Opus)
+        run: |
+          vcpkg install opus:x64-windows-static
+          vcpkg integrate install
+
+      - name: Install Flutter Dependencies
         working-directory: ./flutter
         shell: bash
         run: |
           flutter pub get -v 2>&1 | tee ../pub_get_log.txt
           if [ ${PIPESTATUS[0]} -ne 0 ]; then exit 1; fi
 
-      - name: Commit and Push pub get Log
-        shell: bash
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add pub_get_log.txt
-          git commit -m "Add pub get log" || echo "No changes to commit"
-          git pull --rebase --autostash origin main
-          git push
-
-      - name: Install LLVM
-        uses: KyleMayes/install-llvm-action@v2
-        with:
-          version: "15.0"
-          directory: ${{ runner.temp }}/llvm
-
-      - name: Install vcpkg dependencies
-        run: |
-          vcpkg install opus:x64-windows-static
-          vcpkg integrate install
-
-      - name: Run build.py (Compile Rust & Generate Bridge)
-        shell: bash
-        run: |
-          # نصب وابستگی‌های احتمالی پایتون (مثل درخواست‌های بیلد)
-          python -m pip install --upgrade pip
-          # اجرای اسکریپت بیلد
-          python build.py
-
-      - name: Generate Code
+      - name: Generate Flutter Code (build_runner)
         working-directory: ./flutter
         shell: bash
         run: |
           flutter pub run build_runner build --delete-conflicting-outputs
           if [ ${PIPESTATUS[0]} -ne 0 ]; then exit 1; fi
 
-      - name: Build Windows Release
-        working-directory: ./flutter
+      - name: Run build.py (Compile Rust & Build Flutter Windows & Pack Portable)
         shell: bash
-        env:
-          RENDEZVOUS_SERVER: "185.192.113.204"
-          RS_PUB_KEY: "nq0HcZjf94JGTpvGCazMxyEmIHEFxpXOFDa0C12A3a8="
         run: |
-          flutter build windows --release -v 2>&1 | tee ../build_log.txt
+          python -m pip install --upgrade pip
+          # نکته کلیدی: حتماً باید --flutter ارسال شود تا نسخه فلاتر ساخته شود
+          python build.py --flutter 2>&1 | tee build_log.txt
           if [ ${PIPESTATUS[0]} -ne 0 ]; then exit 1; fi
 
-      - name: Commit and Push Build Log
+      - name: Commit and Push Logs
         if: always()
         shell: bash
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add build_log.txt
-          git commit -m "Add build log" || echo "No changes to commit"
+          git add pub_get_log.txt build_log.txt || true
+          git commit -m "Add build logs" || echo "No changes to commit"
           git pull --rebase --autostash origin main
           git push
 
-      - name: Commit and Push EXE file to Repository
+      - name: Commit and Push EXE files
         shell: bash
         run: |
           mkdir -p releases
-          cp -r flutter/build/windows/x64/runner/Release/* releases/ || echo "No EXE found to copy"
-          cp -r flutter/build/windows/runner/Release/* releases/ || echo "No EXE found to copy"
+          # کپی کردن فایل‌های بیلد فلاتر
+          cp -r flutter/build/windows/x64/runner/Release/* releases/ || echo "No Flutter EXE found"
+          # کپی کردن فایل ستاپ پرتابل ساخته شده توسط اسکریپت پایتون
+          cp rustdesk-*.exe releases/ || echo "No Portable Installer found"
           git add releases/
           git commit -m "Add compiled EXE files" || echo "No changes to commit"
           git pull --rebase --autostash origin main
@@ -122,6 +106,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-release
-          path: |
-            flutter/build/windows/x64/runner/Release/
-            flutter/build/windows/runner/Release/
+          path: releases/
