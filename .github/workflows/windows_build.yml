@@ -12,11 +12,13 @@ jobs:
 
     env:
       LIBCLANG_PATH: "C:/Program Files/LLVM/bin"
-      BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include"
+      BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include -I C:/vcpkg/installed/x64-windows-static/include/opus -I C:/vcpkg/installed/x64-windows-static/include/aom"
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
