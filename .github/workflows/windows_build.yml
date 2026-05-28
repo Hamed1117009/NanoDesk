@@ -34,6 +34,7 @@ jobs:
           channel: "stable"
 
       - name: Install Flutter Dependencies
+        working-directory: ./flutter
         run: flutter pub get
 
       - name: Run Build Runner
