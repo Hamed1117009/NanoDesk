@@ -12,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../common.dart';
+import '../../consts.dart';
 import '../../common/widgets/dialog.dart';
 import '../../common/widgets/login.dart';
 import '../../consts.dart';
@@ -35,7 +36,7 @@ class SettingsPage extends StatefulWidget implements PageShape {
   State<SettingsPage> createState() => _SettingsState();
 }
 
-const url = 'https://rustdesk.com/';
+const url = kNanoDeskWebsiteUrl;
 
 enum KeepScreenOn {
   never,
@@ -952,7 +953,7 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
                 title: Text(translate("Version: ") + version),
                 value: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8),
-                  child: Text('rustdesk.com',
+                  child: Text('onlist.ir/NanoDesk',
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                       )),
@@ -977,7 +978,7 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
             SettingsTile(
               title: Text(translate("Privacy Statement")),
               onPressed: (context) =>
-                  launchUrlString('https://rustdesk.com/privacy.html'),
+                  launchUrlString(kNanoDeskWebsiteUrl),
               leading: Icon(Icons.privacy_tip),
             )
           ],
@@ -1090,12 +1091,12 @@ void showAbout(OverlayDialogManager dialogManager) {
         Text('Version: $version'),
         InkWell(
             onTap: () async {
-              const url = 'https://rustdesk.com/';
+              const url = kNanoDeskWebsiteUrl;
               await launchUrl(Uri.parse(url));
             },
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 8),
-              child: Text('rustdesk.com',
+              child: Text('onlist.ir/NanoDesk',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
                   )),

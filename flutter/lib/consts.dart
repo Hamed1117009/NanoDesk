@@ -7,6 +7,9 @@ import 'package:get/get.dart';
 const int kMaxVirtualDisplayCount = 4;
 const int kAllVirtualDisplay = -1;
 
+/// User-facing NanoDesk website (replaces rustdesk.com links in UI).
+const String kNanoDeskWebsiteUrl = 'https://onlist.ir/NanoDesk';
+
 const double kDesktopRemoteTabBarHeight = 28.0;
 const int kInvalidWindowId = -1;
 const int kMainWindowId = 0;
