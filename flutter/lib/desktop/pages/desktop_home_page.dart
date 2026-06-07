@@ -101,24 +101,26 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       buildTip(context),
       if (!isOutgoingOnly) buildIDBoard(context),
       if (!isOutgoingOnly) buildPasswordBoard(context),
-      FutureBuilder<Widget>(
-        future: Future.value(
-            Obx(() => buildHelpCards(stateGlobal.updateUrl.value))),
-        builder: (_, data) {
-          if (data.hasData) {
-            if (isIncomingOnly) {
-              if (isInHomePage()) {
-                Future.delayed(Duration(milliseconds: 300), () {
-                  _updateWindowSize();
-                });
+      if (!bind.isCustomClient() &&
+          bind.mainGetBuildinOption(key: kOptionHideHelpCards) != 'Y')
+        FutureBuilder<Widget>(
+          future: Future.value(
+              Obx(() => buildHelpCards(stateGlobal.updateUrl.value))),
+          builder: (_, data) {
+            if (data.hasData) {
+              if (isIncomingOnly) {
+                if (isInHomePage()) {
+                  Future.delayed(Duration(milliseconds: 300), () {
+                    _updateWindowSize();
+                  });
+                }
               }
+              return data.data!;
+            } else {
+              return const Offstage();
             }
-            return data.data!;
-          } else {
-            return const Offstage();
-          }
-        },
-      ),
+          },
+        ),
       buildPluginEntry(),
     ];
     if (isIncomingOnly) {
@@ -438,6 +440,10 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   }
 
   Widget buildHelpCards(String updateUrl) {
+    if (bind.isCustomClient() ||
+        bind.mainGetBuildinOption(key: kOptionHideHelpCards) == 'Y') {
+      return Container();
+    }
     if (!bind.isCustomClient() &&
         updateUrl.isNotEmpty &&
         !isCardClosed &&

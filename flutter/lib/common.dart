@@ -2993,8 +2993,16 @@ int versionCmp(String v1, String v2) {
   return bind.versionToNumber(v: v1) - bind.versionToNumber(v: v2);
 }
 
-String getWindowName({WindowType? overrideType}) {
+String get displayAppName {
   final name = bind.mainGetAppNameSync();
+  if (name.isEmpty || name == 'RustDesk') {
+    return 'NanoDesk';
+  }
+  return name;
+}
+
+String getWindowName({WindowType? overrideType}) {
+  final name = displayAppName;
   switch (overrideType ?? kWindowType) {
     case WindowType.Main:
       return name;
@@ -3975,18 +3983,20 @@ void earlyAssert() {
 
 void checkUpdate() {
   if (!isWeb) {
-    if (!bind.isCustomClient()) {
-      platformFFI.registerEventHandler(
-          kCheckSoftwareUpdateFinish, kCheckSoftwareUpdateFinish,
-          (Map<String, dynamic> evt) async {
-        if (evt['url'] is String) {
-          stateGlobal.updateUrl.value = evt['url'];
-        }
-      });
-      Timer(const Duration(seconds: 1), () async {
-        bind.mainGetSoftwareUpdateUrl();
-      });
+    if (bind.isCustomClient() ||
+        bind.mainGetBuildinOption(key: kOptionHideHelpCards) == 'Y') {
+      return;
     }
+    platformFFI.registerEventHandler(
+        kCheckSoftwareUpdateFinish, kCheckSoftwareUpdateFinish,
+        (Map<String, dynamic> evt) async {
+      if (evt['url'] is String) {
+        stateGlobal.updateUrl.value = evt['url'];
+      }
+    });
+    Timer(const Duration(seconds: 1), () async {
+      bind.mainGetSoftwareUpdateUrl();
+    });
   }
 }
 
@@ -4095,7 +4105,7 @@ List<String> getPrinterNames() {
 String _appName = '';
 String get appName {
   if (_appName.isEmpty) {
-    _appName = bind.mainGetAppNameSync();
+    _appName = displayAppName;
   }
   return _appName;
 }
