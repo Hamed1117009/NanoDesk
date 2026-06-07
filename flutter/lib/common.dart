@@ -3982,22 +3982,7 @@ void earlyAssert() {
 }
 
 void checkUpdate() {
-  if (!isWeb) {
-    if (bind.isCustomClient() ||
-        bind.mainGetBuildinOption(key: kOptionHideHelpCards) == 'Y') {
-      return;
-    }
-    platformFFI.registerEventHandler(
-        kCheckSoftwareUpdateFinish, kCheckSoftwareUpdateFinish,
-        (Map<String, dynamic> evt) async {
-      if (evt['url'] is String) {
-        stateGlobal.updateUrl.value = evt['url'];
-      }
-    });
-    Timer(const Duration(seconds: 1), () async {
-      bind.mainGetSoftwareUpdateUrl();
-    });
-  }
+  // NanoDesk: never check for upstream RustDesk updates.
 }
 
 // https://github.com/flutter/flutter/issues/153560#issuecomment-2497160535

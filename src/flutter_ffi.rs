@@ -1730,6 +1730,11 @@ pub fn main_get_last_remote_id() -> String {
 }
 
 pub fn main_get_software_update_url() {
+    if crate::common::is_custom_client()
+        || crate::common::get_builtin_option(hbb_common::config::keys::OPTION_HIDE_HELP_CARDS) == "Y"
+    {
+        return;
+    }
     crate::common::check_software_update();
 }
 

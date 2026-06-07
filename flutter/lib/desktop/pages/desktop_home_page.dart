@@ -101,26 +101,6 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       buildTip(context),
       if (!isOutgoingOnly) buildIDBoard(context),
       if (!isOutgoingOnly) buildPasswordBoard(context),
-      if (!bind.isCustomClient() &&
-          bind.mainGetBuildinOption(key: kOptionHideHelpCards) != 'Y')
-        FutureBuilder<Widget>(
-          future: Future.value(
-              Obx(() => buildHelpCards(stateGlobal.updateUrl.value))),
-          builder: (_, data) {
-            if (data.hasData) {
-              if (isIncomingOnly) {
-                if (isInHomePage()) {
-                  Future.delayed(Duration(milliseconds: 300), () {
-                    _updateWindowSize();
-                  });
-                }
-              }
-              return data.data!;
-            } else {
-              return const Offstage();
-            }
-          },
-        ),
       buildPluginEntry(),
     ];
     if (isIncomingOnly) {
