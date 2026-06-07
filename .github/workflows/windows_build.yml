@@ -6,61 +6,114 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
+  VCPKG_COMMIT_ID: "120deac3062162151622ca4860575a33844ba10b"
+  LLVM_VERSION: "15.0.6"
+  FLUTTER_VERSION: "3.24.5"
+  RUST_VERSION: "1.75"
+  FLUTTER_RUST_BRIDGE_VERSION: "1.80.1"
+
 jobs:
   build:
-    runs-on: windows-latest
-
-    env:
-      LIBCLANG_PATH: "C:/Program Files/LLVM/bin"
-      BINDGEN_EXTRA_CLANG_ARGS: "-I C:/vcpkg/installed/x64-windows-static/include -I C:/vcpkg/installed/x64-windows-static/include/opus -I C:/vcpkg/installed/x64-windows-static/include/aom"
-      VCPKG_ROOT: "C:/vcpkg"
+    runs-on: windows-2022
 
     steps:
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: ${{ env.LLVM_VERSION }}
 
-      - name: Install C++ Dependencies (vcpkg)
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Setup vcpkg with GitHub Actions binary cache
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgDirectory: C:\vcpkg
+          vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
+          doNotCache: false
+
+      - name: Install vcpkg dependencies
+        shell: bash
+        env:
+          VCPKG_DEFAULT_HOST_TRIPLET: x64-windows-static
         run: |
-          vcpkg integrate install
-          vcpkg install opus:x64-windows-static libvpx:x64-windows-static libyuv:x64-windows-static aom:x64-windows-static --classic
+          if ! "$VCPKG_ROOT/vcpkg" install \
+            --triplet x64-windows-static \
+            --x-install-root="$VCPKG_ROOT/installed"; then
+            find "${VCPKG_ROOT}/" -name "*.log" | while read -r logfile; do
+              echo "$logfile:"
+              echo "======"
+              cat "$logfile"
+              echo "======"
+            done
+            exit 1
+          fi
+          test -f "$VCPKG_ROOT/installed/x64-windows-static/include/opus/opus_multistream.h"
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.24.0"
+          flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: "stable"
+
+      - name: Replace engine with RustDesk custom Flutter engine
+        run: |
+          flutter doctor -v
+          flutter precache --windows
+          Invoke-WebRequest -Uri https://github.com/rustdesk/engine/releases/download/main/windows-x64-release.zip -OutFile windows-x64-release.zip
+          Expand-Archive -Path windows-x64-release.zip -DestinationPath windows-x64-release
+          $engineDir = "C:/hostedtoolcache/windows/flutter/stable-${{ env.FLUTTER_VERSION }}-x64/bin/cache/artifacts/engine/windows-x64-release"
+          New-Item -ItemType Directory -Force -Path $engineDir | Out-Null
+          Copy-Item -Path windows-x64-release/* -Destination $engineDir -Recurse -Force
+
+      - name: Install Flutter dependencies
+        working-directory: ./flutter
+        run: flutter pub get
+
+      - name: Generate Rust/Dart bridge
+        shell: bash
+        run: |
+          cargo install flutter_rust_bridge_codegen --version ${{ env.FLUTTER_RUST_BRIDGE_VERSION }} --features "uuid" --locked
+          cargo install cargo-expand --version 1.0.95 --locked
+          ~/.cargo/bin/flutter_rust_bridge_codegen \
+            --rust-input ./src/flutter_ffi.rs \
+            --dart-output ./flutter/lib/generated_bridge.dart \
+            --c-output ./flutter/macos/Runner/bridge_generated.h
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      - name: Generate Rust/Dart Bindings
-        run: python build.py --flutter
+      - name: Build Windows app (Release)
+        shell: bash
+        run: python build.py --flutter --skip-portable-pack
 
-      - name: Install Flutter Dependencies
-        working-directory: ./flutter
-        run: flutter pub get
-
-      - name: Run Build Runner
-        working-directory: ./flutter # <--- این خط اضافه شد
-        run: dart run build_runner build --delete-conflicting-outputs
-
-      - name: Build Windows App (Release)
-        working-directory: ./flutter # <--- این خط اضافه شد
-        run: flutter build windows --release
-
-      - name: Prepare Release Directory
+      - name: Prepare release directory
+        shell: bash
         run: |
           mkdir -p releases
-          # مسیر بیلد اصلاح شد تا پوشه flutter را در نظر بگیرد
           cp -r flutter/build/windows/x64/runner/Release/* releases/
 
-      - name: Upload Windows Artifact
+      - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: NanoDesk-Windows-Release
