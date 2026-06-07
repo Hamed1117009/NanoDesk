@@ -90,11 +90,7 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "NanoDesk" "\0"
-<<<<<<< HEAD
             VALUE "FileDescription", "NanoDesk" "\0"
-=======
-            VALUE "FileDescription", "NanoDesk Remote Desktop" "\0"
->>>>>>> 67349ba2d858888cd408d31adf96ba187e959c28
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "nanodesk" "\0"
             VALUE "LegalCopyright", "Copyright © 2025 NanoDesk. All rights reserved." "\0"
