@@ -6,6 +6,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hbb/common/widgets/connection_page_title.dart';
+import 'package:flutter_hbb/ad_banner.dart';
 import 'package:flutter_hbb/consts.dart';
 import 'package:flutter_hbb/desktop/widgets/popup_menu.dart';
 import 'package:flutter_hbb/models/state_model.dart';
@@ -305,6 +306,7 @@ class _ConnectionPageState extends State<ConnectionPage>
   Widget build(BuildContext context) {
     final isOutgoingOnly = bind.isOutgoingOnly();
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
             child: Column(
@@ -320,7 +322,8 @@ class _ConnectionPageState extends State<ConnectionPage>
           ],
         ).paddingOnly(left: 12.0)),
         if (!isOutgoingOnly) const Divider(height: 1),
-        if (!isOutgoingOnly) OnlineStatusWidget()
+        if (!isOutgoingOnly) OnlineStatusWidget(),
+        if (!isOutgoingOnly) const BottomAdBanners(),
       ],
     );
   }

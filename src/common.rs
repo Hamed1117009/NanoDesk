@@ -2085,10 +2085,12 @@ pub fn load_custom_client() {
     #[cfg(debug_assertions)]
     if let Ok(data) = std::fs::read_to_string("./custom.txt") {
         read_custom_client(data.trim());
+        init_nanodesk_server_config();
         return;
     }
     let Some(path) = std::env::current_exe().map_or(None, |x| x.parent().map(|x| x.to_path_buf()))
     else {
+        init_nanodesk_server_config();
         return;
     };
     #[cfg(target_os = "macos")]
@@ -2097,10 +2099,20 @@ pub fn load_custom_client() {
     if path.is_file() {
         let Ok(data) = std::fs::read_to_string(&path) else {
             log::error!("Failed to read custom client config");
+            init_nanodesk_server_config();
             return;
         };
         read_custom_client(&data.trim());
     }
+    init_nanodesk_server_config();
+}
+
+/// Ensure rendezvous uses the built-in NanoDesk server settings.
+pub fn init_nanodesk_server_config() {
+    if !is_custom_client() {
+        return;
+    }
+    test_rendezvous_server();
 }
 
 fn read_custom_client_advanced_settings(

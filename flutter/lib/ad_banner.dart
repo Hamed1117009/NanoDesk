@@ -3,6 +3,10 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+/// Original banner asset size used to preserve aspect ratio in the footer.
+const double kBannerAspectWidth = 1792;
+const double kBannerAspectHeight = 592;
+
 class BottomAdBanners extends StatefulWidget {
   const BottomAdBanners({Key? key}) : super(key: key);
 
@@ -71,38 +75,59 @@ class _BottomAdBannersState extends State<BottomAdBanners> {
     } catch (_) {}
   }
 
+  Widget _buildBannerSlot(Map<String, String>? banner, double height) {
+    if (banner == null) {
+      return SizedBox(height: height);
+    }
+
+    final picUrl = banner['pic'] ?? '';
+    final linkUrl = banner['url'] ?? '';
+
+    return SizedBox(
+      height: height,
+      child: InkWell(
+        onTap: linkUrl.isNotEmpty ? () => _launchUrl(linkUrl) : null,
+        child: Image.network(
+          picUrl,
+          width: double.infinity,
+          height: height,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_banners.isEmpty) {
       return const SizedBox.shrink();
     }
 
-    return Container(
-      height: 266,
-      padding: const EdgeInsets.all(8.0),
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: _banners.map((banner) {
-          final picUrl = banner['pic'] ?? '';
-          final linkUrl = banner['url'] ?? '';
+    final first = _banners.isNotEmpty ? _banners[0] : null;
+    final second = _banners.length > 1 ? _banners[1] : null;
 
-          return Expanded(
-            child: InkWell(
-              onTap: linkUrl.isNotEmpty ? () => _launchUrl(linkUrl) : null,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Image.network(
-                  picUrl,
-                  fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const SizedBox.shrink(),
-                ),
-              ),
-            ),
-          );
-        }).toList(),
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        if (width <= 0) {
+          return const SizedBox.shrink();
+        }
+
+        final height = width * kBannerAspectHeight / kBannerAspectWidth;
+
+        return SizedBox(
+          width: width,
+          height: height,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(child: _buildBannerSlot(first, height)),
+              Expanded(child: _buildBannerSlot(second, height)),
+            ],
+          ),
+        );
+      },
     );
   }
 }

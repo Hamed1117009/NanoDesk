@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hbb/ad_banner.dart';
 import 'package:flutter_hbb/common.dart';
 import 'package:flutter_hbb/common/widgets/animated_rotation_widget.dart';
 import 'package:flutter_hbb/common/widgets/custom_password.dart';
@@ -74,7 +73,6 @@ class _DesktopHomePageState extends State<DesktopHomePage>
             ],
           ),
         ),
-        if (!isIncomingOnly) const BottomAdBanners(),
       ],
     ));
   }
