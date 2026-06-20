@@ -6,6 +6,10 @@ import 'dart:convert';
 /// Original banner asset size used to preserve aspect ratio in the footer.
 const double kBannerAspectWidth = 1792;
 const double kBannerAspectHeight = 592;
+const double kBannerMaxHeight = 400;
+
+double _pairWidthAtHeight(double height) =>
+    height * (kBannerAspectWidth * 2 / kBannerAspectHeight);
 
 class BottomAdBanners extends StatefulWidget {
   const BottomAdBanners({Key? key}) : super(key: key);
@@ -87,12 +91,14 @@ class _BottomAdBannersState extends State<BottomAdBanners> {
       height: height,
       child: InkWell(
         onTap: linkUrl.isNotEmpty ? () => _launchUrl(linkUrl) : null,
-        child: Image.network(
-          picUrl,
-          width: double.infinity,
-          height: height,
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
+        child: Center(
+          child: Image.network(
+            picUrl,
+            height: height,
+            fit: BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) =>
+                const SizedBox.shrink(),
+          ),
         ),
       ),
     );
@@ -109,22 +115,32 @@ class _BottomAdBannersState extends State<BottomAdBanners> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        if (width <= 0) {
+        final maxWidth = constraints.maxWidth;
+        if (maxWidth <= 0) {
           return const SizedBox.shrink();
         }
 
-        final height = width * kBannerAspectHeight / kBannerAspectWidth;
+        // Two 1792x592 banners side by side → total aspect (3584 : 592).
+        final heightFromWidth =
+            maxWidth * kBannerAspectHeight / (kBannerAspectWidth * 2);
+        final capped = heightFromWidth > kBannerMaxHeight;
+        final height = capped ? kBannerMaxHeight : heightFromWidth;
+        final pairWidth = capped
+            ? _pairWidthAtHeight(kBannerMaxHeight).clamp(0.0, maxWidth)
+            : maxWidth;
 
-        return SizedBox(
-          width: width,
-          height: height,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(child: _buildBannerSlot(first, height)),
-              Expanded(child: _buildBannerSlot(second, height)),
-            ],
+        return Align(
+          alignment: Alignment.center,
+          child: SizedBox(
+            width: pairWidth,
+            height: height,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(child: _buildBannerSlot(first, height)),
+                Expanded(child: _buildBannerSlot(second, height)),
+              ],
+            ),
           ),
         );
       },
